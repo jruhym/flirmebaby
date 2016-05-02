@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="flirmebaby" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Agu-VI-d9D" userLabel="fieldOfVision">
+                                <rect key="frame" x="180" y="236" width="240" height="128"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mI2-FF-djY" userLabel="Temperature">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" priority="250" constant="128" placeholder="YES" id="0Yp-bH-8q9"/>
+                                            <constraint firstAttribute="width" priority="250" constant="240" placeholder="YES" id="oid-JY-1U0"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Crosshair.png" translatesAutoresizingMaskIntoConstraints="NO" id="tZC-VN-QOH">
+                                        <rect key="frame" x="-66" y="-67" width="132" height="134"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Crosshair.png" translatesAutoresizingMaskIntoConstraints="NO" id="0sy-ZP-G9B" userLabel="Min Temperature Crosshairs">
+                                        <rect key="frame" x="-66" y="-67" width="132" height="134"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="mI2-FF-djY" secondAttribute="trailing" id="2Do-QX-1gq"/>
+                                    <constraint firstItem="mI2-FF-djY" firstAttribute="top" secondItem="Agu-VI-d9D" secondAttribute="top" id="BvF-4b-HXj"/>
+                                    <constraint firstItem="0sy-ZP-G9B" firstAttribute="centerY" secondItem="Agu-VI-d9D" secondAttribute="top" identifier="minTemperatureCrosshairsY" id="DXP-AQ-6K3"/>
+                                    <constraint firstItem="0sy-ZP-G9B" firstAttribute="centerX" secondItem="Agu-VI-d9D" secondAttribute="leading" identifier="minTemperatureCrosshairsX" id="GKX-Dm-Ats"/>
+                                    <constraint firstItem="tZC-VN-QOH" firstAttribute="centerX" secondItem="Agu-VI-d9D" secondAttribute="leading" identifier="maxTemperatureCrosshairsX" id="P8A-hK-n5y"/>
+                                    <constraint firstItem="tZC-VN-QOH" firstAttribute="centerY" secondItem="Agu-VI-d9D" secondAttribute="top" identifier="maxTemperatureCrosshairsY" id="ZYo-px-ByG"/>
+                                    <constraint firstAttribute="bottom" secondItem="mI2-FF-djY" secondAttribute="bottom" id="dTw-qM-s9p"/>
+                                    <constraint firstItem="mI2-FF-djY" firstAttribute="leading" secondItem="Agu-VI-d9D" secondAttribute="leading" id="ghQ-OR-V0N"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Maximum T = " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XQn-ol-iob">
+                                <rect key="frame" x="191" y="559" width="109" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lDv-mZ-Djr">
+                                <rect key="frame" x="300" y="559" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aP5-Lt-TcA">
+                                <rect key="frame" x="300" y="577" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Minimum T = " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JMq-NB-N74">
+                                <rect key="frame" x="195" y="577" width="105" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="JMq-NB-N74" firstAttribute="top" secondItem="XQn-ol-iob" secondAttribute="bottom" constant="-3" id="6D9-df-EDz"/>
+                            <constraint firstItem="lDv-mZ-Djr" firstAttribute="leading" secondItem="XQn-ol-iob" secondAttribute="trailing" id="6lk-uT-ld4"/>
+                            <constraint firstItem="Agu-VI-d9D" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="KbQ-Yc-LoV"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="JMq-NB-N74" secondAttribute="bottom" constant="2" id="Ojn-8I-V7i"/>
+                            <constraint firstItem="JMq-NB-N74" firstAttribute="trailing" secondItem="XQn-ol-iob" secondAttribute="trailing" id="PaE-7a-jpi"/>
+                            <constraint firstItem="Agu-VI-d9D" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Xju-iJ-jHf"/>
+                            <constraint firstItem="aP5-Lt-TcA" firstAttribute="leading" secondItem="JMq-NB-N74" secondAttribute="trailing" id="eJy-wY-jlH"/>
+                            <constraint firstItem="JMq-NB-N74" firstAttribute="baseline" secondItem="aP5-Lt-TcA" secondAttribute="baseline" id="g9F-NO-PNM"/>
+                            <constraint firstItem="XQn-ol-iob" firstAttribute="baseline" secondItem="lDv-mZ-Djr" secondAttribute="baseline" id="oRe-dj-cd1"/>
+                            <constraint firstItem="XQn-ol-iob" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="centerXWithinMargins" id="sGm-qn-d9b"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="fieldOfVision" destination="Agu-VI-d9D" id="O1F-vR-ad0"/>
+                        <outlet property="imageView" destination="mI2-FF-djY" id="UDu-qf-HNG"/>
+                        <outlet property="maxTemperatureCrosshairs" destination="tZC-VN-QOH" id="QF9-fP-qFx"/>
+                        <outlet property="maxTemperatureCrosshairsX" destination="P8A-hK-n5y" id="qbt-yb-qZ7"/>
+                        <outlet property="maxTemperatureCrosshairsY" destination="ZYo-px-ByG" id="9G6-hA-xOJ"/>
+                        <outlet property="maxTemperatureLabel" destination="lDv-mZ-Djr" id="Hyo-rx-hxI"/>
+                        <outlet property="minTemperatureCrosshairs" destination="0sy-ZP-G9B" id="2OR-DX-n9j"/>
+                        <outlet property="minTemperatureCrosshairsX" destination="GKX-Dm-Ats" id="wxk-y6-zcF"/>
+                        <outlet property="minTemperatureCrosshairsY" destination="DXP-AQ-6K3" id="CvU-gI-ysV"/>
+                        <outlet property="minTemperatureLabel" destination="aP5-Lt-TcA" id="8Q2-aY-hR7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="424" y="298"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Crosshair.png" width="132" height="134"/>
+    </resources>
+</document>

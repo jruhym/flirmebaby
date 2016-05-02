@@ -1,0 +1,2 @@
+FLIROneSDK filter=lfs diff=lfs merge=lfs -text
+b0ca25950b18a6af849f7219ea0ad198 filter=lfs diff=lfs merge=lfs -text

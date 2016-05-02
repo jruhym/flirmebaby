@@ -1,0 +1,345 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3A12562C1CCE713F0056DF68 /* sampleframes_hq.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3A12562B1CCE713F0056DF68 /* sampleframes_hq.bundle */; };
+		3AF7620B1CC986C100599F6D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF7620A1CC986C100599F6D /* AppDelegate.swift */; };
+		3AF7620D1CC986C100599F6D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF7620C1CC986C100599F6D /* ViewController.swift */; };
+		3AF762101CC986C100599F6D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AF7620E1CC986C100599F6D /* Main.storyboard */; };
+		3AF762121CC986C100599F6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AF762111CC986C100599F6D /* Assets.xcassets */; };
+		3AF762151CC986C100599F6D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AF762131CC986C100599F6D /* LaunchScreen.storyboard */; };
+		3AF7621E1CC988DD00599F6D /* FLIROneSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AF7621D1CC988DD00599F6D /* FLIROneSDK.framework */; };
+		3AF762201CC9890B00599F6D /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AF7621F1CC9890B00599F6D /* Accelerate.framework */; };
+		3AF762221CC9896D00599F6D /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AF762211CC9896D00599F6D /* libstdc++.tbd */; };
+		3AF762241CC98F5A00599F6D /* FLIROneSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3AF762231CC98F5A00599F6D /* FLIROneSDK.bundle */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3A12562B1CCE713F0056DF68 /* sampleframes_hq.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = sampleframes_hq.bundle; sourceTree = "<group>"; };
+		3AF762071CC986C100599F6D /* flirmebaby.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = flirmebaby.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3AF7620A1CC986C100599F6D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3AF7620C1CC986C100599F6D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3AF7620F1CC986C100599F6D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3AF762111CC986C100599F6D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3AF762141CC986C100599F6D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3AF762161CC986C100599F6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3AF7621D1CC988DD00599F6D /* FLIROneSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FLIROneSDK.framework; sourceTree = "<group>"; };
+		3AF7621F1CC9890B00599F6D /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		3AF762211CC9896D00599F6D /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
+		3AF762231CC98F5A00599F6D /* FLIROneSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FLIROneSDK.bundle; sourceTree = "<group>"; };
+		3AF762271CCA688F00599F6D /* flirmebaby-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "flirmebaby-Bridging-Header.h"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3AF762041CC986C100599F6D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3AF762221CC9896D00599F6D /* libstdc++.tbd in Frameworks */,
+				3AF762201CC9890B00599F6D /* Accelerate.framework in Frameworks */,
+				3AF7621E1CC988DD00599F6D /* FLIROneSDK.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3AF761FE1CC986C100599F6D = {
+			isa = PBXGroup;
+			children = (
+				3AF762091CC986C100599F6D /* flirmebaby */,
+				3AF7621C1CC988B500599F6D /* Frameworks */,
+				3AF762081CC986C100599F6D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3AF762081CC986C100599F6D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3AF762071CC986C100599F6D /* flirmebaby.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3AF762091CC986C100599F6D /* flirmebaby */ = {
+			isa = PBXGroup;
+			children = (
+				3AF7620A1CC986C100599F6D /* AppDelegate.swift */,
+				3AF7620C1CC986C100599F6D /* ViewController.swift */,
+				3AF7620E1CC986C100599F6D /* Main.storyboard */,
+				3AF762111CC986C100599F6D /* Assets.xcassets */,
+				3AF762131CC986C100599F6D /* LaunchScreen.storyboard */,
+				3AF762161CC986C100599F6D /* Info.plist */,
+				3AF762271CCA688F00599F6D /* flirmebaby-Bridging-Header.h */,
+			);
+			path = flirmebaby;
+			sourceTree = "<group>";
+		};
+		3AF7621C1CC988B500599F6D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3A12562B1CCE713F0056DF68 /* sampleframes_hq.bundle */,
+				3AF762231CC98F5A00599F6D /* FLIROneSDK.bundle */,
+				3AF762211CC9896D00599F6D /* libstdc++.tbd */,
+				3AF7621F1CC9890B00599F6D /* Accelerate.framework */,
+				3AF7621D1CC988DD00599F6D /* FLIROneSDK.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3AF762061CC986C100599F6D /* flirmebaby */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3AF762191CC986C100599F6D /* Build configuration list for PBXNativeTarget "flirmebaby" */;
+			buildPhases = (
+				3AF762031CC986C100599F6D /* Sources */,
+				3AF762041CC986C100599F6D /* Frameworks */,
+				3AF762051CC986C100599F6D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = flirmebaby;
+			productName = flirmebaby;
+			productReference = 3AF762071CC986C100599F6D /* flirmebaby.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3AF761FF1CC986C100599F6D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = Tonic;
+				TargetAttributes = {
+					3AF762061CC986C100599F6D = {
+						CreatedOnToolsVersion = 7.3;
+					};
+				};
+			};
+			buildConfigurationList = 3AF762021CC986C100599F6D /* Build configuration list for PBXProject "flirmebaby" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3AF761FE1CC986C100599F6D;
+			productRefGroup = 3AF762081CC986C100599F6D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3AF762061CC986C100599F6D /* flirmebaby */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3AF762051CC986C100599F6D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3AF762151CC986C100599F6D /* LaunchScreen.storyboard in Resources */,
+				3A12562C1CCE713F0056DF68 /* sampleframes_hq.bundle in Resources */,
+				3AF762121CC986C100599F6D /* Assets.xcassets in Resources */,
+				3AF762241CC98F5A00599F6D /* FLIROneSDK.bundle in Resources */,
+				3AF762101CC986C100599F6D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3AF762031CC986C100599F6D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3AF7620D1CC986C100599F6D /* ViewController.swift in Sources */,
+				3AF7620B1CC986C100599F6D /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		3AF7620E1CC986C100599F6D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3AF7620F1CC986C100599F6D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3AF762131CC986C100599F6D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3AF762141CC986C100599F6D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3AF762171CC986C100599F6D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		3AF762181CC986C100599F6D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3AF7621A1CC986C100599F6D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/FLIROneSDK.framework/Headers";
+				INFOPLIST_FILE = flirmebaby/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ultravioletcatastrophe.flirmebaby;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "flirmebaby/flirmebaby-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		3AF7621B1CC986C100599F6D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/FLIROneSDK.framework/Headers";
+				INFOPLIST_FILE = flirmebaby/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ultravioletcatastrophe.flirmebaby;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "flirmebaby/flirmebaby-Bridging-Header.h";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3AF762021CC986C100599F6D /* Build configuration list for PBXProject "flirmebaby" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3AF762171CC986C100599F6D /* Debug */,
+				3AF762181CC986C100599F6D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3AF762191CC986C100599F6D /* Build configuration list for PBXNativeTarget "flirmebaby" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3AF7621A1CC986C100599F6D /* Debug */,
+				3AF7621B1CC986C100599F6D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3AF761FF1CC986C100599F6D /* Project object */;
+}
