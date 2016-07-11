@@ -98,6 +98,12 @@
                                             </vibrancyEffect>
                                         </visualEffectView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="VjB-tg-ONZ" firstAttribute="top" secondItem="pls-dY-Cez" secondAttribute="top" id="Dga-yn-pBJ"/>
+                                        <constraint firstAttribute="bottom" secondItem="VjB-tg-ONZ" secondAttribute="bottom" id="Spc-0d-Vh0"/>
+                                        <constraint firstItem="VjB-tg-ONZ" firstAttribute="leading" secondItem="pls-dY-Cez" secondAttribute="leading" id="XBB-Nd-ixX"/>
+                                        <constraint firstAttribute="trailing" secondItem="VjB-tg-ONZ" secondAttribute="trailing" id="dAb-7f-BOA"/>
+                                    </constraints>
                                 </view>
                                 <constraints>
                                     <constraint firstItem="VjB-tg-ONZ" firstAttribute="top" secondItem="sdl-PY-WYV" secondAttribute="top" id="0M9-sZ-xyz"/>
@@ -115,9 +121,13 @@
                                     <mask key="constraints">
                                         <exclude reference="ngq-zZ-oti"/>
                                         <exclude reference="0M9-sZ-xyz"/>
+                                        <exclude reference="2aD-j5-MFl"/>
                                         <exclude reference="B96-YJ-BUM"/>
                                         <exclude reference="SE5-hz-WwK"/>
+                                        <exclude reference="bd1-42-pAb"/>
                                         <exclude reference="gPp-zG-cUo"/>
+                                        <exclude reference="hSS-er-JdL"/>
+                                        <exclude reference="o29-xf-gCd"/>
                                     </mask>
                                 </variation>
                             </visualEffectView>
