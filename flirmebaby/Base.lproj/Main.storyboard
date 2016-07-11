@@ -22,8 +22,9 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Agu-VI-d9D" userLabel="fieldOfVision">
                                 <rect key="frame" x="180" y="236" width="240" height="128"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="240" placeholderIntrinsicHeight="128" translatesAutoresizingMaskIntoConstraints="NO" id="mI2-FF-djY" userLabel="Temperature">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="240" placeholderIntrinsicHeight="128" translatesAutoresizingMaskIntoConstraints="NO" id="mI2-FF-djY" userLabel="Temperature">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0096454260930000004" alpha="1" colorSpace="calibratedRGB"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Crosshair.png" translatesAutoresizingMaskIntoConstraints="NO" id="tZC-VN-QOH">
                                         <rect key="frame" x="-66" y="-67" width="132" height="134"/>
@@ -32,7 +33,7 @@
                                         <rect key="frame" x="-66" y="-67" width="132" height="134"/>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.50990099010000001" green="0.019801980199999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="mI2-FF-djY" secondAttribute="trailing" id="2Do-QX-1gq"/>
                                     <constraint firstItem="mI2-FF-djY" firstAttribute="top" secondItem="Agu-VI-d9D" secondAttribute="top" id="BvF-4b-HXj"/>
@@ -79,9 +80,17 @@
                             <constraint firstItem="Agu-VI-d9D" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Xju-iJ-jHf"/>
                             <constraint firstItem="aP5-Lt-TcA" firstAttribute="leading" secondItem="JMq-NB-N74" secondAttribute="trailing" id="eJy-wY-jlH"/>
                             <constraint firstItem="JMq-NB-N74" firstAttribute="baseline" secondItem="aP5-Lt-TcA" secondAttribute="baseline" id="g9F-NO-PNM"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="Agu-VI-d9D" secondAttribute="trailing" id="irx-Gm-hug"/>
                             <constraint firstItem="XQn-ol-iob" firstAttribute="baseline" secondItem="lDv-mZ-Djr" secondAttribute="baseline" id="oRe-dj-cd1"/>
                             <constraint firstItem="XQn-ol-iob" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="centerXWithinMargins" id="sGm-qn-d9b"/>
+                            <constraint firstItem="Agu-VI-d9D" firstAttribute="top" relation="greaterThanOrEqual" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="zda-zp-BOs"/>
+                            <constraint firstItem="Agu-VI-d9D" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="zhI-NI-Srt"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="irx-Gm-hug"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="fieldOfVision" destination="Agu-VI-d9D" id="O1F-vR-ad0"/>
