@@ -22,12 +22,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Agu-VI-d9D" userLabel="fieldOfVision">
                                 <rect key="frame" x="180" y="236" width="240" height="128"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mI2-FF-djY" userLabel="Temperature">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="240" placeholderIntrinsicHeight="128" translatesAutoresizingMaskIntoConstraints="NO" id="mI2-FF-djY" userLabel="Temperature">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" priority="250" constant="128" placeholder="YES" id="0Yp-bH-8q9"/>
-                                            <constraint firstAttribute="width" priority="250" constant="240" placeholder="YES" id="oid-JY-1U0"/>
-                                        </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Crosshair.png" translatesAutoresizingMaskIntoConstraints="NO" id="tZC-VN-QOH">
                                         <rect key="frame" x="-66" y="-67" width="132" height="134"/>
