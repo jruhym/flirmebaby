@@ -18,35 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Agu-VI-d9D" userLabel="fieldOfVision">
-                                <rect key="frame" x="180" y="20" width="240" height="500"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="240" placeholderIntrinsicHeight="507.5" translatesAutoresizingMaskIntoConstraints="NO" id="mI2-FF-djY" userLabel="Temperature">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="500"/>
-                                        <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="500" placeholder="YES" id="bFA-n4-mnq"/>
-                                        </constraints>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Crosshair.png" translatesAutoresizingMaskIntoConstraints="NO" id="tZC-VN-QOH">
-                                        <rect key="frame" x="-66" y="-67" width="132" height="134"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Crosshair.png" translatesAutoresizingMaskIntoConstraints="NO" id="0sy-ZP-G9B" userLabel="Min Temperature Crosshairs">
-                                        <rect key="frame" x="-66" y="-67" width="132" height="134"/>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" red="0.50990099010000001" green="0.019801980199999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="mI2-FF-djY" secondAttribute="trailing" id="2Do-QX-1gq"/>
-                                    <constraint firstItem="mI2-FF-djY" firstAttribute="top" secondItem="Agu-VI-d9D" secondAttribute="top" id="BvF-4b-HXj"/>
-                                    <constraint firstItem="0sy-ZP-G9B" firstAttribute="centerY" secondItem="Agu-VI-d9D" secondAttribute="top" identifier="minTemperatureCrosshairsY" id="DXP-AQ-6K3"/>
-                                    <constraint firstItem="0sy-ZP-G9B" firstAttribute="centerX" secondItem="Agu-VI-d9D" secondAttribute="leading" identifier="minTemperatureCrosshairsX" id="GKX-Dm-Ats"/>
-                                    <constraint firstItem="tZC-VN-QOH" firstAttribute="centerX" secondItem="Agu-VI-d9D" secondAttribute="leading" identifier="maxTemperatureCrosshairsX" id="P8A-hK-n5y"/>
-                                    <constraint firstItem="tZC-VN-QOH" firstAttribute="centerY" secondItem="Agu-VI-d9D" secondAttribute="top" identifier="maxTemperatureCrosshairsY" id="ZYo-px-ByG"/>
-                                    <constraint firstAttribute="bottom" secondItem="mI2-FF-djY" secondAttribute="bottom" id="dTw-qM-s9p"/>
-                                    <constraint firstItem="mI2-FF-djY" firstAttribute="leading" secondItem="Agu-VI-d9D" secondAttribute="leading" id="ghQ-OR-V0N"/>
-                                </constraints>
-                            </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cLy-NX-hib" userLabel="reflected Image View">
                                 <rect key="frame" x="180" y="520" width="240" height="500"/>
                             </imageView>
@@ -123,6 +94,35 @@
                                 </view>
                                 <blurEffect style="light"/>
                             </visualEffectView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Agu-VI-d9D" userLabel="fieldOfVision">
+                                <rect key="frame" x="180" y="20" width="240" height="500"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="240" placeholderIntrinsicHeight="507.5" translatesAutoresizingMaskIntoConstraints="NO" id="mI2-FF-djY" userLabel="Temperature">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="500"/>
+                                        <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="500" placeholder="YES" id="bFA-n4-mnq"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Crosshair.png" translatesAutoresizingMaskIntoConstraints="NO" id="tZC-VN-QOH">
+                                        <rect key="frame" x="-66" y="-67" width="132" height="134"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Crosshair.png" translatesAutoresizingMaskIntoConstraints="NO" id="0sy-ZP-G9B" userLabel="Min Temperature Crosshairs">
+                                        <rect key="frame" x="-66" y="-67" width="132" height="134"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.50990099010000001" green="0.019801980199999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="mI2-FF-djY" secondAttribute="trailing" id="2Do-QX-1gq"/>
+                                    <constraint firstItem="mI2-FF-djY" firstAttribute="top" secondItem="Agu-VI-d9D" secondAttribute="top" id="BvF-4b-HXj"/>
+                                    <constraint firstItem="0sy-ZP-G9B" firstAttribute="centerY" secondItem="Agu-VI-d9D" secondAttribute="top" identifier="minTemperatureCrosshairsY" id="DXP-AQ-6K3"/>
+                                    <constraint firstItem="0sy-ZP-G9B" firstAttribute="centerX" secondItem="Agu-VI-d9D" secondAttribute="leading" identifier="minTemperatureCrosshairsX" id="GKX-Dm-Ats"/>
+                                    <constraint firstItem="tZC-VN-QOH" firstAttribute="centerX" secondItem="Agu-VI-d9D" secondAttribute="leading" identifier="maxTemperatureCrosshairsX" id="P8A-hK-n5y"/>
+                                    <constraint firstItem="tZC-VN-QOH" firstAttribute="centerY" secondItem="Agu-VI-d9D" secondAttribute="top" identifier="maxTemperatureCrosshairsY" id="ZYo-px-ByG"/>
+                                    <constraint firstAttribute="bottom" secondItem="mI2-FF-djY" secondAttribute="bottom" id="dTw-qM-s9p"/>
+                                    <constraint firstItem="mI2-FF-djY" firstAttribute="leading" secondItem="Agu-VI-d9D" secondAttribute="leading" id="ghQ-OR-V0N"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
