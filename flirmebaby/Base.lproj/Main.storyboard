@@ -100,7 +100,7 @@
                                                 </constraints>
                                             </view>
                                             <vibrancyEffect>
-                                                <blurEffect style="light"/>
+                                                <blurEffect style="extraLight"/>
                                             </vibrancyEffect>
                                         </visualEffectView>
                                     </subviews>
