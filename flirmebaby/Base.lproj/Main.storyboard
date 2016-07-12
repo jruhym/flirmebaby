@@ -23,7 +23,7 @@
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="240" placeholderIntrinsicHeight="507.5" translatesAutoresizingMaskIntoConstraints="NO" id="mI2-FF-djY" userLabel="Temperature">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="500"/>
-                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0096454260930000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="500" placeholder="YES" id="bFA-n4-mnq"/>
                                         </constraints>
@@ -47,8 +47,11 @@
                                     <constraint firstItem="mI2-FF-djY" firstAttribute="leading" secondItem="Agu-VI-d9D" secondAttribute="leading" id="ghQ-OR-V0N"/>
                                 </constraints>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cLy-NX-hib" userLabel="reflected Image View">
+                                <rect key="frame" x="180" y="520" width="240" height="500"/>
+                            </imageView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sdl-PY-WYV">
-                                <rect key="frame" x="0.0" y="519.5" width="600" height="80"/>
+                                <rect key="frame" x="0.0" y="520" width="600" height="80"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="pls-dY-Cez">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -59,35 +62,35 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="600" height="61"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Maximum T = " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XQn-ol-iob">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Maximum T = " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XQn-ol-iob">
                                                         <rect key="frame" x="191" y="8" width="109" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lDv-mZ-Djr">
-                                                        <rect key="frame" x="300" y="7.5" width="42" height="21"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lDv-mZ-Djr">
+                                                        <rect key="frame" x="300" y="7" width="42" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aP5-Lt-TcA">
-                                                        <rect key="frame" x="300" y="32.5" width="42" height="20.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aP5-Lt-TcA">
+                                                        <rect key="frame" x="300" y="32" width="42" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Minimum T = " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JMq-NB-N74">
-                                                        <rect key="frame" x="195" y="32.5" width="105" height="20.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Minimum T = " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JMq-NB-N74">
+                                                        <rect key="frame" x="195" y="32" width="105" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
                                                 <constraints>
+                                                    <constraint firstItem="XQn-ol-iob" firstAttribute="trailing" secondItem="KB0-ny-uFP" secondAttribute="centerX" id="8gV-Wa-jcI"/>
                                                     <constraint firstItem="XQn-ol-iob" firstAttribute="top" secondItem="KB0-ny-uFP" secondAttribute="top" constant="8" id="8o2-OF-Pli"/>
                                                     <constraint firstItem="lDv-mZ-Djr" firstAttribute="baseline" secondItem="XQn-ol-iob" secondAttribute="baseline" id="9zP-rU-FhZ"/>
-                                                    <constraint firstItem="XQn-ol-iob" firstAttribute="trailing" secondItem="KB0-ny-uFP" secondAttribute="centerX" id="Anj-k3-KDE"/>
                                                     <constraint firstItem="JMq-NB-N74" firstAttribute="top" secondItem="XQn-ol-iob" secondAttribute="bottom" constant="4" id="IeF-GL-Qyd"/>
                                                     <constraint firstItem="aP5-Lt-TcA" firstAttribute="baseline" secondItem="JMq-NB-N74" secondAttribute="baseline" id="MIq-Su-rG6"/>
                                                     <constraint firstItem="JMq-NB-N74" firstAttribute="trailing" secondItem="XQn-ol-iob" secondAttribute="trailing" id="P3W-uE-rWM"/>
@@ -106,12 +109,14 @@
                                         <constraint firstItem="VjB-tg-ONZ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="pls-dY-Cez" secondAttribute="top" constant="8" id="HYW-na-IGb"/>
                                         <constraint firstAttribute="bottom" secondItem="VjB-tg-ONZ" secondAttribute="bottom" id="Spc-0d-Vh0"/>
                                         <constraint firstItem="VjB-tg-ONZ" firstAttribute="leading" secondItem="pls-dY-Cez" secondAttribute="leading" id="XBB-Nd-ixX"/>
+                                        <constraint firstItem="VjB-tg-ONZ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="pls-dY-Cez" secondAttribute="top" id="aWR-ta-rZb"/>
                                         <constraint firstAttribute="trailing" secondItem="VjB-tg-ONZ" secondAttribute="trailing" id="dAb-7f-BOA"/>
                                         <constraint firstItem="VjB-tg-ONZ" firstAttribute="centerY" secondItem="pls-dY-Cez" secondAttribute="centerY" id="oS1-Id-mI6"/>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
                                             <exclude reference="Dga-yn-pBJ"/>
+                                            <exclude reference="HYW-na-IGb"/>
                                             <exclude reference="Spc-0d-Vh0"/>
                                         </mask>
                                     </variation>
@@ -122,13 +127,25 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="sdl-PY-WYV" secondAttribute="trailing" id="7NR-Cv-NFe"/>
+                            <constraint firstItem="cLy-NX-hib" firstAttribute="centerX" secondItem="Agu-VI-d9D" secondAttribute="centerX" id="9cp-1T-0kS"/>
+                            <constraint firstItem="cLy-NX-hib" firstAttribute="top" secondItem="sdl-PY-WYV" secondAttribute="top" id="Azs-dq-nE5"/>
+                            <constraint firstItem="cLy-NX-hib" firstAttribute="height" secondItem="Agu-VI-d9D" secondAttribute="height" id="EE1-LI-hZ5"/>
                             <constraint firstItem="Agu-VI-d9D" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="KbQ-Yc-LoV"/>
                             <constraint firstItem="sdl-PY-WYV" firstAttribute="top" secondItem="Agu-VI-d9D" secondAttribute="bottom" id="Rg0-gJ-GGW"/>
                             <constraint firstItem="sdl-PY-WYV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Wr9-Fe-dv7"/>
+                            <constraint firstItem="cLy-NX-hib" firstAttribute="top" secondItem="Agu-VI-d9D" secondAttribute="bottom" id="Wru-fG-VCu"/>
+                            <constraint firstItem="cLy-NX-hib" firstAttribute="leading" secondItem="Agu-VI-d9D" secondAttribute="trailing" constant="-240" id="hpN-S7-oQz"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="sdl-PY-WYV" secondAttribute="bottom" id="mqw-s0-bMM"/>
+                            <constraint firstItem="cLy-NX-hib" firstAttribute="width" secondItem="Agu-VI-d9D" secondAttribute="width" id="qqb-bN-Rop"/>
                             <constraint firstItem="Agu-VI-d9D" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="zda-zp-BOs"/>
                             <constraint firstItem="Agu-VI-d9D" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="zhI-NI-Srt"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Wru-fG-VCu"/>
+                                <exclude reference="hpN-S7-oQz"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="fieldOfVision" destination="Agu-VI-d9D" id="O1F-vR-ad0"/>
@@ -141,6 +158,7 @@
                         <outlet property="minTemperatureCrosshairsX" destination="GKX-Dm-Ats" id="wxk-y6-zcF"/>
                         <outlet property="minTemperatureCrosshairsY" destination="DXP-AQ-6K3" id="CvU-gI-ysV"/>
                         <outlet property="minTemperatureLabel" destination="aP5-Lt-TcA" id="8Q2-aY-hR7"/>
+                        <outlet property="reflection" destination="cLy-NX-hib" id="jrc-Dm-Mbb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

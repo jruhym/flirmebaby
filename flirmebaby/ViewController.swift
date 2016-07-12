@@ -4,7 +4,7 @@ let sizeOfMeasurment = sizeof(UInt16)
 let hundredthsOfKelvinToFarenheitDegrees: Float = 0.018
 let absoluteZeroInFarhenheit: Float = -459.67
 let halfOfFLIRPeriod: NSTimeInterval = 0.05555555555556
-
+let flip = CGAffineTransformMakeScale(1, -1)
 class ViewController: UIViewController, FLIROneSDKImageReceiverDelegate, FLIROneSDKStreamManagerDelegate {
 
     @IBOutlet weak private var imageView: UIImageView!
@@ -17,6 +17,7 @@ class ViewController: UIViewController, FLIROneSDKImageReceiverDelegate, FLIROne
     @IBOutlet weak private var minTemperatureCrosshairsX: NSLayoutConstraint!
     @IBOutlet weak private var minTemperatureCrosshairsY: NSLayoutConstraint!
     @IBOutlet weak private var fieldOfVision: UIView!
+    @IBOutlet weak private var reflection: UIImageView!
 
     private var xScaleFactor: CGFloat = 1.0
     private var yScaleFactor: CGFloat = 1.0
@@ -25,11 +26,11 @@ class ViewController: UIViewController, FLIROneSDKImageReceiverDelegate, FLIROne
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.reflection.transform = flip
         FLIROneSDKStreamManager.sharedInstance().addDelegate(self)
         if let options = FLIROneSDKImageOptions(rawValue: (FLIROneSDKImageOptions.BlendedMSXRGBA8888Image.rawValue) | (FLIROneSDKImageOptions.ThermalRadiometricKelvinImage.rawValue)) {
             FLIROneSDKStreamManager.sharedInstance().imageOptions = options
         }
-
         FLIROneSDKSimulation.sharedInstance().connectWithFrameBundleName("sampleframes_hq", withBatteryChargePercentage: 42)
     }
 
@@ -44,9 +45,9 @@ class ViewController: UIViewController, FLIROneSDKImageReceiverDelegate, FLIROne
 
     func FLIROneSDKDelegateManager(delegateManager: NSObject!, didReceiveBlendedMSXRGBA8888Image msxImage: NSData!, imageSize size: CGSize) {
         let image = FLIROneSDKUIImage(format: FLIROneSDKImageOptions.BlendedMSXRGBA8888Image, andData: msxImage, andSize: size)
-
         dispatch_async(dispatch_get_main_queue()) {
             self.imageView.image = image;
+            self.reflection.image = image;
         }
     }
 
