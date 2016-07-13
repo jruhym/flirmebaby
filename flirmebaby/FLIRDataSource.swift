@@ -10,7 +10,14 @@ enum Palette: String {
     case Coldest = "Coldest"
 }
 
-//enum
+enum FLIRImageOptions {
+    case BlendedMSXRGBA8888
+    case ThermalRGBA8888
+    case LinearFlux14Bit
+    case RadiometricKelvinx100
+    case VisualJPEG
+    case VisualYCbCr
+}
 
 typealias VoidClosure = () -> (Void)
 
