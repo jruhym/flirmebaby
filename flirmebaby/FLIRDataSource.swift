@@ -10,10 +10,11 @@ enum Palettes: String {
     case Coldest = "Coldest"
 }
 
-protocol FLIRDataSourceProtocol {
-//    func FLIRDidConnect(item1, item2) in return item1 < item2)
+typealias VoidClosure = () -> (Void)
 
+protocol FLIRDataSourceProtocol {
     var palette: Palettes { get set }
+    var didConnectClosure: VoidClosure { get set }
 }
 
 class FLIRDataSource: NSObject, FLIRDataSourceProtocol, FLIROneSDKImageReceiverDelegate, FLIROneSDKStreamManagerDelegate {
@@ -26,6 +27,8 @@ class FLIRDataSource: NSObject, FLIRDataSourceProtocol, FLIROneSDKImageReceiverD
         }
     }
 
+    var didConnectClosure: VoidClosure = {}
+
     override init() {
         super.init()
         FLIROneSDKStreamManager.sharedInstance().addDelegate(self)
@@ -33,7 +36,9 @@ class FLIRDataSource: NSObject, FLIRDataSourceProtocol, FLIROneSDKImageReceiverD
     }
 
     func FLIROneSDKDidConnect() {
+        didConnectClosure()
     }
+
 
     func FLIROneSDKDelegateManager(delegateManager: NSObject!, didReceiveBlendedMSXRGBA8888Image msxImage: NSData!, imageSize size: CGSize) {
     }
