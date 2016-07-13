@@ -1,6 +1,6 @@
 import Foundation
 
-enum Palettes: String {
+enum Palette: String {
     case Arctic = "Arctic"
     case Hottest = "Hottest"
     case Gray = "Gray"
@@ -10,16 +10,18 @@ enum Palettes: String {
     case Coldest = "Coldest"
 }
 
+//enum
+
 typealias VoidClosure = () -> (Void)
 
 protocol FLIRDataSourceProtocol {
-    var palette: Palettes { get set }
+    var palette: Palette { get set }
     var didConnectClosure: VoidClosure { get set }
 }
 
 class FLIRDataSource: NSObject, FLIRDataSourceProtocol, FLIROneSDKImageReceiverDelegate, FLIROneSDKStreamManagerDelegate {
 
-    var palette: Palettes = .Iron {
+    var palette: Palette = .Iron {
         didSet {
             if let FLIROneSDKPalettes = (FLIROneSDKPalette.palettes() as? [String: FLIROneSDKPalette]), FLIROneSDKPalette = FLIROneSDKPalettes[palette.rawValue] {
                 FLIROneSDKStreamManager.sharedInstance().palette? = FLIROneSDKPalette
