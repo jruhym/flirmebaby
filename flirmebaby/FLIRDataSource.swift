@@ -25,7 +25,7 @@ typealias DataReceptionClosure = (NSData, CGSize) -> Void
 
 protocol FLIRDataSourceProtocol {
     var palette: Palette { get set }
-    var didConnectClosure: VoidClosure { get set }
+    var didConnectClosure: VoidClosure? { get set }
     var didReceiveImageClosure: ImageReceptionClosure? { get set }
     var didReceiveDataClosure: DataReceptionClosure? { get set }
 }
@@ -41,7 +41,7 @@ class FLIRDataSource: NSObject, FLIRDataSourceProtocol, FLIROneSDKImageReceiverD
         }
     }
 
-    var didConnectClosure: VoidClosure = {}
+    var didConnectClosure: VoidClosure?
     var didReceiveImageClosure: ImageReceptionClosure?
     var didReceiveDataClosure: DataReceptionClosure?
 
@@ -52,7 +52,7 @@ class FLIRDataSource: NSObject, FLIRDataSourceProtocol, FLIROneSDKImageReceiverD
     }
 
     func FLIROneSDKDidConnect() {
-        didConnectClosure()
+        didConnectClosure?()
     }
 
     func FLIROneSDKDelegateManager(delegateManager: NSObject!, didReceiveBlendedMSXRGBA8888Image msxImage: NSData!, imageSize size: CGSize) {
