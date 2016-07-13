@@ -18,7 +18,13 @@ protocol FLIRDataSourceProtocol {
 
 class FLIRDataSource: NSObject, FLIRDataSourceProtocol, FLIROneSDKImageReceiverDelegate, FLIROneSDKStreamManagerDelegate {
 
-    var palette: Palettes = .Iron
+    var palette: Palettes = .Iron {
+        didSet {
+            if let FLIROneSDKPalettes = (FLIROneSDKPalette.palettes() as? [String: FLIROneSDKPalette]), FLIROneSDKPalette = FLIROneSDKPalettes[palette.rawValue] {
+                FLIROneSDKStreamManager.sharedInstance().palette? = FLIROneSDKPalette
+            }
+        }
+    }
 
     override init() {
         super.init()
