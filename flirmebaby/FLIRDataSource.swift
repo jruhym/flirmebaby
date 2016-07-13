@@ -21,11 +21,13 @@ enum FLIRImageOptions {
 
 typealias VoidClosure = () -> (Void)
 typealias ImageReceptionClosure = (UIImage, CGSize) -> Void
+typealias DataReceptionClosure = (NSData, CGSize) -> Void
 
 protocol FLIRDataSourceProtocol {
     var palette: Palette { get set }
     var didConnectClosure: VoidClosure { get set }
     var didReceiveImageClosure: ImageReceptionClosure? { get set }
+    var didReceiveDataClosure: DataReceptionClosure? { get set }
 }
 
 class FLIRDataSource: NSObject, FLIRDataSourceProtocol, FLIROneSDKImageReceiverDelegate, FLIROneSDKStreamManagerDelegate {
@@ -41,6 +43,7 @@ class FLIRDataSource: NSObject, FLIRDataSourceProtocol, FLIROneSDKImageReceiverD
 
     var didConnectClosure: VoidClosure = {}
     var didReceiveImageClosure: ImageReceptionClosure?
+    var didReceiveDataClosure: DataReceptionClosure?
 
     override init() {
         super.init()
@@ -52,12 +55,12 @@ class FLIRDataSource: NSObject, FLIRDataSourceProtocol, FLIROneSDKImageReceiverD
         didConnectClosure()
     }
 
-
     func FLIROneSDKDelegateManager(delegateManager: NSObject!, didReceiveBlendedMSXRGBA8888Image msxImage: NSData!, imageSize size: CGSize) {
         let image = FLIROneSDKUIImage(format: FLIROneSDKImageOptions.BlendedMSXRGBA8888Image, andData: msxImage, andSize: size)
         didReceiveImageClosure?(image, size)
     }
 
     func FLIROneSDKDelegateManager(delegateManager: NSObject!, didReceiveRadiometricData radiometricData: NSData!, imageSize size: CGSize) {
+        didReceiveDataClosure?(radiometricData, size)
     }
 }
