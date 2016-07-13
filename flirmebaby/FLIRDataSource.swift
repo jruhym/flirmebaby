@@ -12,9 +12,13 @@ enum Palettes: String {
 
 protocol FLIRDataSourceProtocol {
 //    func FLIRDidConnect(item1, item2) in return item1 < item2)
+
+    var palette: Palettes { get set }
 }
 
-class FLIRDataSource: NSObject, FLIROneSDKImageReceiverDelegate, FLIROneSDKStreamManagerDelegate {
+class FLIRDataSource: NSObject, FLIRDataSourceProtocol, FLIROneSDKImageReceiverDelegate, FLIROneSDKStreamManagerDelegate {
+
+    var palette: Palettes = .Iron
 
     override init() {
         super.init()
