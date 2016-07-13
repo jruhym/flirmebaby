@@ -1,4 +1,19 @@
 import Foundation
+
+enum Palettes: String {
+    case Arctic = "Arctic"
+    case Hottest = "Hottest"
+    case Gray = "Gray"
+    case Iron = "Iron"
+    case Contrast = "Contrast"
+    case Rainbow = "Rainbow"
+    case Coldest = "Coldest"
+}
+
+protocol FLIRDataSourceProtocol {
+//    func FLIRDidConnect(item1, item2) in return item1 < item2)
+}
+
 class FLIRDataSource: NSObject, FLIROneSDKImageReceiverDelegate, FLIROneSDKStreamManagerDelegate {
 
     override init() {
