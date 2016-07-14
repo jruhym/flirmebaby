@@ -29,14 +29,8 @@ class ViewController: UIViewController, FLIROneSDKImageReceiverDelegate, FLIROne
         super.viewDidLoad()
         self.reflection.transform = flip
         flirDataSource.imageOptions = FLIRImageOptions(rawValue: (FLIRImageOptions.BlendedMSXRGBA8888.rawValue) | (FLIRImageOptions.RadiometricKelvinx100.rawValue))
-    }
-
-    //MARK: delegate methods
-
-    func FLIROneSDKDidConnect() {
-        // viewDidLoad seems to be too early for changing the palette
-        if let palettes = (FLIROneSDKPalette.palettes() as? [String: FLIROneSDKPalette]), palette = palettes["Rainbow"] {
-            FLIROneSDKStreamManager.sharedInstance().palette? = palette
+        flirDataSource.didConnectClosure = {
+            self.flirDataSource.palette = .Iron
         }
     }
 
