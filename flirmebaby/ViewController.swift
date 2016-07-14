@@ -5,7 +5,8 @@ let hundredthsOfKelvinToFarenheitDegrees: Float = 0.018
 let absoluteZeroInFarhenheit: Float = -459.67
 let halfOfFLIRPeriod: NSTimeInterval = 0.05555555555556
 let flip = CGAffineTransformMakeScale(1, -1)
-class ViewController: UIViewController, FLIROneSDKImageReceiverDelegate, FLIROneSDKStreamManagerDelegate {
+
+class ViewController: UIViewController {
 
     @IBOutlet weak private var imageView: UIImageView!
     @IBOutlet weak private var maxTemperatureLabel: UILabel!
@@ -23,24 +24,29 @@ class ViewController: UIViewController, FLIROneSDKImageReceiverDelegate, FLIROne
     private var yScaleFactor: CGFloat = 1.0
     private var previousSizeOfFieldOfVision = CGSize()
     private var previousSizeOfImage = CGSize()
-    private let flirDataSource = FLIRDataSource()
+    private weak var flirDataSource: FLIRDataSource? {
+        didSet {
+            let optionsRawValue = (FLIRImageOptions.BlendedMSXRGBA8888.rawValue) | (FLIRImageOptions.RadiometricKelvinx100.rawValue)
+            flirDataSource?.imageOptions = FLIRImageOptions(rawValue: optionsRawValue)
+            flirDataSource?.didConnectClosure = {
+                self.flirDataSource?.palette = .Iron
+            }
+            flirDataSource?.didReceiveImageClosure = { image, size in
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.imageView.image = image;
+                    self.reflection.image = image;
+                }
+            }
+            flirDataSource?.didReceiveDataClosure = { data, size in
+                self.seekHotAndCold(data, imageSize: size)
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         reflection.transform = flip
-        flirDataSource.imageOptions = FLIRImageOptions(rawValue: (FLIRImageOptions.BlendedMSXRGBA8888.rawValue) | (FLIRImageOptions.RadiometricKelvinx100.rawValue))
-        flirDataSource.didConnectClosure = { [weak self] in
-            self?.flirDataSource.palette = .Iron
-        }
-        flirDataSource.didReceiveImageClosure = {[weak self] image, size in
-            dispatch_async(dispatch_get_main_queue()) {
-                self?.imageView.image = image;
-                self?.reflection.image = image;
-            }
-        }
-        flirDataSource.didReceiveDataClosure = {[weak self] data, size in
-            self?.seekHotAndCold(data, imageSize: size)
-        }
+        flirDataSource = FLIRDataSource()
     }
 
     func seekHotAndCold(radiometricData: NSData!, imageSize size: CGSize) {
