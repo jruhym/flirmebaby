@@ -27,22 +27,23 @@ class ViewController: UIViewController, FLIROneSDKImageReceiverDelegate, FLIROne
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.reflection.transform = flip
+        reflection.transform = flip
         flirDataSource.imageOptions = FLIRImageOptions(rawValue: (FLIRImageOptions.BlendedMSXRGBA8888.rawValue) | (FLIRImageOptions.RadiometricKelvinx100.rawValue))
-        flirDataSource.didConnectClosure = {
-            self.flirDataSource.palette = .Iron
+        flirDataSource.didConnectClosure = { [weak self] in
+            self?.flirDataSource.palette = .Iron
+        }
+        flirDataSource.didReceiveImageClosure = {[weak self] image, size in
+            dispatch_async(dispatch_get_main_queue()) {
+                self?.imageView.image = image;
+                self?.reflection.image = image;
+            }
+        }
+        flirDataSource.didReceiveDataClosure = {[weak self] data, size in
+            self?.seekHotAndCold(data, imageSize: size)
         }
     }
 
-    func FLIROneSDKDelegateManager(delegateManager: NSObject!, didReceiveBlendedMSXRGBA8888Image msxImage: NSData!, imageSize size: CGSize) {
-        let image = FLIROneSDKUIImage(format: FLIROneSDKImageOptions.BlendedMSXRGBA8888Image, andData: msxImage, andSize: size)
-        dispatch_async(dispatch_get_main_queue()) {
-            self.imageView.image = image;
-            self.reflection.image = image;
-        }
-    }
-
-    func FLIROneSDKDelegateManager(delegateManager: NSObject!, didReceiveRadiometricData radiometricData: NSData!, imageSize size: CGSize) {
+    func seekHotAndCold(radiometricData: NSData!, imageSize size: CGSize) {
         var maxTemperature = UInt16()
         var minTemperature = UInt16.max
         var memoryPositionOfMaximumTemperature = 0
