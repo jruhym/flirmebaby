@@ -25,6 +25,7 @@ typealias DataReceptionClosure = (NSData, CGSize) -> Void
 
 protocol FLIRDataSourceProtocol {
     var palette: Palette { get set }
+    var imageOptions: FLIRImageOptions? { get set }
     var didConnectClosure: VoidClosure? { get set }
     var didReceiveImageClosure: ImageReceptionClosure? { get set }
     var didReceiveDataClosure: DataReceptionClosure? { get set }
@@ -44,6 +45,13 @@ class FLIRDataSource: NSObject, FLIRDataSourceProtocol, FLIROneSDKImageReceiverD
     var didConnectClosure: VoidClosure?
     var didReceiveImageClosure: ImageReceptionClosure?
     var didReceiveDataClosure: DataReceptionClosure?
+    var imageOptions: FLIRImageOptions? {
+        didSet {
+            if let imageOptions = imageOptions, sdkImageOptions = FLIROneSDKImageOptions(rawValue: imageOptions.rawValue) {
+                FLIROneSDKStreamManager.sharedInstance().imageOptions = sdkImageOptions
+            }
+        }
+    }
 
     override init() {
         super.init()
