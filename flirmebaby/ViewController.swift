@@ -23,15 +23,12 @@ class ViewController: UIViewController, FLIROneSDKImageReceiverDelegate, FLIROne
     private var yScaleFactor: CGFloat = 1.0
     private var previousSizeOfFieldOfVision = CGSize()
     private var previousSizeOfImage = CGSize()
+    private let flirDataSource = FLIRDataSource()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.reflection.transform = flip
-        FLIROneSDKStreamManager.sharedInstance().addDelegate(self)
-        if let options = FLIROneSDKImageOptions(rawValue: (FLIROneSDKImageOptions.BlendedMSXRGBA8888Image.rawValue) | (FLIROneSDKImageOptions.ThermalRadiometricKelvinImage.rawValue)) {
-            FLIROneSDKStreamManager.sharedInstance().imageOptions = options
-        }
-        FLIROneSDKSimulation.sharedInstance().connectWithFrameBundleName("sampleframes_hq", withBatteryChargePercentage: 42)
+        flirDataSource.imageOptions = FLIRImageOptions(rawValue: (FLIRImageOptions.BlendedMSXRGBA8888.rawValue) | (FLIRImageOptions.RadiometricKelvinx100.rawValue))
     }
 
     //MARK: delegate methods
