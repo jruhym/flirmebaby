@@ -31,10 +31,10 @@ protocol FLIRDataSourceProtocol {
     var didReceiveDataClosure: DataReceptionClosure? { get set }
 }
 
-class FLIRDataSource: NSObject, FLIRDataSourceProtocol, FLIROneSDKImageReceiverDelegate, FLIROneSDKStreamManagerDelegate {
+class FLIRDataSource: NSObject, FLIRDataSourceProtocol {
 
     var palette: Palette = .Iron {
-        //Did connect closure is a good place to set this.
+        //Did-connect closure is a good place to set this.
         didSet {
             if let FLIROneSDKPalettes = (FLIROneSDKPalette.palettes() as? [String: FLIROneSDKPalette]), FLIROneSDKPalette = FLIROneSDKPalettes[palette.rawValue] {
                 FLIROneSDKStreamManager.sharedInstance().palette? = FLIROneSDKPalette
@@ -62,6 +62,9 @@ class FLIRDataSource: NSObject, FLIRDataSourceProtocol, FLIROneSDKImageReceiverD
         super.init()
         FLIROneSDKStreamManager.sharedInstance().addDelegate(self)
     }
+}
+
+extension FLIRDataSource: FLIROneSDKImageReceiverDelegate, FLIROneSDKStreamManagerDelegate {
 
     func FLIROneSDKDidConnect() {
         didConnectClosure?()
