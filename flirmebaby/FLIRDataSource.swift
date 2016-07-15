@@ -25,7 +25,7 @@ typealias DataReceptionClosure = (NSData, CGSize) -> Void
 
 protocol FLIRDataSourceProtocol {
     var palette: Palette { get set }
-    var imageOptions: FLIRImageOptions? { get set }
+    var imageOptions: [FLIRImageOptions]? { get set }
     var didConnectClosure: VoidClosure? { get set }
     var didReceiveImageClosure: ImageReceptionClosure? { get set }
     var didReceiveDataClosure: DataReceptionClosure? { get set }
@@ -45,10 +45,15 @@ class FLIRDataSource: NSObject, FLIRDataSourceProtocol, FLIROneSDKImageReceiverD
     var didConnectClosure: VoidClosure?
     var didReceiveImageClosure: ImageReceptionClosure?
     var didReceiveDataClosure: DataReceptionClosure?
-    var imageOptions: FLIRImageOptions? {
+    var imageOptions: [FLIRImageOptions]? {
         didSet {
-            if let imageOptions = imageOptions, sdkImageOptions = FLIROneSDKImageOptions(rawValue: imageOptions.rawValue) {
+            var sdkImageOptionsRawValue: UInt64 = 0
+            for imageOption in imageOptions ?? [] {
+                sdkImageOptionsRawValue += imageOption.rawValue
+            }
+            if let sdkImageOptions = FLIROneSDKImageOptions(rawValue: sdkImageOptionsRawValue) where sdkImageOptionsRawValue > 0 {
                 FLIROneSDKStreamManager.sharedInstance().imageOptions = sdkImageOptions
+                FLIROneSDKSimulation.sharedInstance().connectWithFrameBundleName("sampleframes_hq", withBatteryChargePercentage: 42)
             }
         }
     }
@@ -56,7 +61,6 @@ class FLIRDataSource: NSObject, FLIRDataSourceProtocol, FLIROneSDKImageReceiverD
     override init() {
         super.init()
         FLIROneSDKStreamManager.sharedInstance().addDelegate(self)
-        FLIROneSDKSimulation.sharedInstance().connectWithFrameBundleName("sampleframes_hq", withBatteryChargePercentage: 42)
     }
 
     func FLIROneSDKDidConnect() {

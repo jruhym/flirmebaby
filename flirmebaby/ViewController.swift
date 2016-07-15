@@ -26,8 +26,7 @@ class ViewController: UIViewController {
     private var previousSizeOfImage = CGSize()
     private weak var flirDataSource: FLIRDataSource? {
         didSet {
-            let optionsRawValue = (FLIRImageOptions.BlendedMSXRGBA8888.rawValue) | (FLIRImageOptions.RadiometricKelvinx100.rawValue)
-            flirDataSource?.imageOptions = FLIRImageOptions(rawValue: optionsRawValue)
+            flirDataSource?.imageOptions = [.BlendedMSXRGBA8888, .RadiometricKelvinx100]//FLIRImageOptions(rawValue: optionsRawValue)
             flirDataSource?.didConnectClosure = {
                 self.flirDataSource?.palette = .Iron
             }
