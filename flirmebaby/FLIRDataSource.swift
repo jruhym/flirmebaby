@@ -62,6 +62,10 @@ class FLIRDataSource: NSObject, FLIRDataSourceProtocol {
         super.init()
         FLIROneSDKStreamManager.sharedInstance().addDelegate(self)
     }
+
+    deinit {
+        FLIROneSDKStreamManager.sharedInstance().removeDelegate(self)
+    }
 }
 
 extension FLIRDataSource: FLIROneSDKImageReceiverDelegate, FLIROneSDKStreamManagerDelegate {
