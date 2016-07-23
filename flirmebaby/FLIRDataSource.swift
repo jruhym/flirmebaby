@@ -29,6 +29,7 @@ protocol FLIRDataSourceProtocol {
     var didConnectClosure: VoidClosure? { get set }
     var didReceiveImageClosure: ImageReceptionClosure? { get set }
     var didReceiveDataClosure: DataReceptionClosure? { get set }
+    var showDemo: Bool? { get set }
 }
 
 class FLIRDataSource: NSObject, FLIRDataSourceProtocol {
@@ -53,6 +54,12 @@ class FLIRDataSource: NSObject, FLIRDataSourceProtocol {
             }
             if let sdkImageOptions = FLIROneSDKImageOptions(rawValue: sdkImageOptionsRawValue) where sdkImageOptionsRawValue > 0 {
                 FLIROneSDKStreamManager.sharedInstance().imageOptions = sdkImageOptions
+            }
+        }
+    }
+    var showDemo: Bool? {
+        didSet {
+            if (showDemo != nil) {
                 FLIROneSDKSimulation.sharedInstance().connectWithFrameBundleName("sampleframes_hq", withBatteryChargePercentage: 42)
             }
         }
