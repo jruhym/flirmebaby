@@ -5,7 +5,8 @@ let hundredthsOfKelvinToFarenheitDegrees: Float = 0.018
 let absoluteZeroInFarhenheit: Float = -459.67
 let halfOfFLIRPeriod: NSTimeInterval = 0.05555555555556
 let flip = CGAffineTransformMakeScale(1, -1)
-class ViewController: UIViewController, FLIROneSDKImageReceiverDelegate, FLIROneSDKStreamManagerDelegate {
+
+class ViewController: UIViewController {
 
     @IBOutlet weak private var imageView: UIImageView!
     @IBOutlet weak private var maxTemperatureLabel: UILabel!
@@ -23,35 +24,32 @@ class ViewController: UIViewController, FLIROneSDKImageReceiverDelegate, FLIROne
     private var yScaleFactor: CGFloat = 1.0
     private var previousSizeOfFieldOfVision = CGSize()
     private var previousSizeOfImage = CGSize()
+    private weak var flirDataSource: FLIRDataSource? {
+        didSet {
+            flirDataSource?.imageOptions = [.BlendedMSXRGBA8888, .RadiometricKelvinx100]//FLIRImageOptions(rawValue: optionsRawValue)
+            flirDataSource?.showDemo = true
+            flirDataSource?.didConnectClosure = {
+                self.flirDataSource?.palette = .Iron
+            }
+            flirDataSource?.didReceiveImageClosure = { image, size in
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.imageView.image = image;
+                    self.reflection.image = image;
+                }
+            }
+            flirDataSource?.didReceiveDataClosure = { data, size in
+                self.seekHotAndCold(data, imageSize: size)
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.reflection.transform = flip
-        FLIROneSDKStreamManager.sharedInstance().addDelegate(self)
-        if let options = FLIROneSDKImageOptions(rawValue: (FLIROneSDKImageOptions.BlendedMSXRGBA8888Image.rawValue) | (FLIROneSDKImageOptions.ThermalRadiometricKelvinImage.rawValue)) {
-            FLIROneSDKStreamManager.sharedInstance().imageOptions = options
-        }
-        FLIROneSDKSimulation.sharedInstance().connectWithFrameBundleName("sampleframes_hq", withBatteryChargePercentage: 42)
+        reflection.transform = flip
+        flirDataSource = FLIRDataSource()
     }
 
-    //MARK: delegate methods
-
-    func FLIROneSDKDidConnect() {
-        // viewDidLoad seems to be too early for changing the palette
-        if let palettes = (FLIROneSDKPalette.palettes() as? [String: FLIROneSDKPalette]), palette = palettes["Rainbow"] {
-            FLIROneSDKStreamManager.sharedInstance().palette? = palette
-        }
-    }
-
-    func FLIROneSDKDelegateManager(delegateManager: NSObject!, didReceiveBlendedMSXRGBA8888Image msxImage: NSData!, imageSize size: CGSize) {
-        let image = FLIROneSDKUIImage(format: FLIROneSDKImageOptions.BlendedMSXRGBA8888Image, andData: msxImage, andSize: size)
-        dispatch_async(dispatch_get_main_queue()) {
-            self.imageView.image = image;
-            self.reflection.image = image;
-        }
-    }
-
-    func FLIROneSDKDelegateManager(delegateManager: NSObject!, didReceiveRadiometricData radiometricData: NSData!, imageSize size: CGSize) {
+    func seekHotAndCold(radiometricData: NSData!, imageSize size: CGSize) {
         var maxTemperature = UInt16()
         var minTemperature = UInt16.max
         var memoryPositionOfMaximumTemperature = 0
