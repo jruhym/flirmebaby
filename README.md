@@ -1,4 +1,4 @@
 # flirmebaby
 experiments with FLIR One SDK in Swift
-Prerequisites:
+## Prerequisites:
 https://git-lfs.github.com/
