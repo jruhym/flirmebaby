@@ -49,6 +49,10 @@ class ViewController: UIViewController {
         flirDataSource = FLIRDataSource()
     }
 
+    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+        return .all
+    }
+
     func seekHotAndCold(_ radiometricData: Data!, imageSize size: CGSize) {
         var maxTemperature = UInt16()
         var minTemperature = UInt16.max
