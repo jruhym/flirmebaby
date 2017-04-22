@@ -137,19 +137,11 @@
                             <constraint firstItem="Agu-VI-d9D" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="KbQ-Yc-LoV"/>
                             <constraint firstItem="sdl-PY-WYV" firstAttribute="top" secondItem="Agu-VI-d9D" secondAttribute="bottom" id="Rg0-gJ-GGW"/>
                             <constraint firstItem="sdl-PY-WYV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Wr9-Fe-dv7"/>
-                            <constraint firstItem="cLy-NX-hib" firstAttribute="top" secondItem="Agu-VI-d9D" secondAttribute="bottom" id="Wru-fG-VCu"/>
-                            <constraint firstItem="cLy-NX-hib" firstAttribute="leading" secondItem="Agu-VI-d9D" secondAttribute="trailing" constant="-240" id="hpN-S7-oQz"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="sdl-PY-WYV" secondAttribute="bottom" id="mqw-s0-bMM"/>
                             <constraint firstItem="cLy-NX-hib" firstAttribute="width" secondItem="Agu-VI-d9D" secondAttribute="width" id="qqb-bN-Rop"/>
                             <constraint firstItem="Agu-VI-d9D" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="zda-zp-BOs"/>
                             <constraint firstItem="Agu-VI-d9D" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="zhI-NI-Srt"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="Wru-fG-VCu"/>
-                                <exclude reference="hpN-S7-oQz"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
                         <outlet property="fieldOfVision" destination="Agu-VI-d9D" id="O1F-vR-ad0"/>
