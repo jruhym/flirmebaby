@@ -33,7 +33,7 @@
  @param metadata Metadata regarding the particular frame being delivered, such as palette used, emissivity, etc
  */
 
-- (void) FLIROneSDKDelegateManager:(NSObject *)delegateManager didReceiveFrameWithOptions:(FLIROneSDKImageOptions)options metadata:(FLIROneSDKImageMetadata *)metadata;
+- (void) FLIROneSDKDelegateManager:(FLIROneSDKDelegateManager *)delegateManager didReceiveFrameWithOptions:(FLIROneSDKImageOptions)options metadata:(FLIROneSDKImageMetadata *)metadata;
 
 /**
  Called when the user has requested the MSX (thermal + visual) image format
@@ -45,7 +45,7 @@
  @warning The size parameter is guaranteed to be static per-session, but changing FLIR One devices may alter the size parameter
  @see FLIROneSDKUIImage
  */
-- (void) FLIROneSDKDelegateManager:(NSObject *)delegateManager didReceiveBlendedMSXRGBA8888Image:(NSData *)msxImage imageSize:(CGSize)size;
+- (void) FLIROneSDKDelegateManager:(FLIROneSDKDelegateManager *)delegateManager didReceiveBlendedMSXRGBA8888Image:(NSData *)msxImage imageSize:(CGSize)size;
 
 /**
  Called when the user has requested the 14 bit linear flux data
@@ -57,7 +57,7 @@
  @warning The size parameter is guaranteed to be static per-session, but changing FLIR One devices may alter the size parameter
  @see FLIROneSDKUIImage
  */
-- (void) FLIROneSDKDelegateManager:(NSObject *)delegateManager didReceiveThermal14BitLinearFluxImage:(NSData *)linearFluxImage imageSize:(CGSize)size;
+- (void) FLIROneSDKDelegateManager:(FLIROneSDKDelegateManager *)delegateManager didReceiveThermal14BitLinearFluxImage:(NSData *)linearFluxImage imageSize:(CGSize)size;
 /**
  Called when the user has requested the pure thermal image format
  
@@ -68,7 +68,7 @@
  @warning The size parameter is guaranteed to be static per-session, but changing FLIR One devices may alter the size parameter
  @see FLIROneSDKUIImage
  */
-- (void) FLIROneSDKDelegateManager:(NSObject *)delegateManager didReceiveThermalRGBA8888Image:(NSData *)thermalImage imageSize:(CGSize)size;
+- (void) FLIROneSDKDelegateManager:(FLIROneSDKDelegateManager *)delegateManager didReceiveThermalRGBA8888Image:(NSData *)thermalImage imageSize:(CGSize)size;
 /**
  Called when the user has requested the visual image formatted with JPEG
  
@@ -77,7 +77,7 @@
  
  @see FLIROneSDKUIImage
  */
-- (void) FLIROneSDKDelegateManager:(NSObject *)delegateManager didReceiveVisualJPEGImage:(NSData *)visualJPEGImage;
+- (void) FLIROneSDKDelegateManager:(FLIROneSDKDelegateManager *)delegateManager didReceiveVisualJPEGImage:(NSData *)visualJPEGImage;
 /**
  Called when the user has requested the visual image formatted with YCbCr
  
@@ -88,7 +88,7 @@
  @warning The size parameter is guaranteed to be static per-session, but changing FLIR One devices may alter the size parameter
  @see FLIROneSDKUIImage
  */
-- (void) FLIROneSDKDelegateManager:(NSObject *)delegateManager didReceiveVisualYCbCr888Image:(NSData *)visualYCbCr888Image imageSize:(CGSize)size;
+- (void) FLIROneSDKDelegateManager:(FLIROneSDKDelegateManager *)delegateManager didReceiveVisualYCbCr888Image:(NSData *)visualYCbCr888Image imageSize:(CGSize)size;
 
 /**
  Returned when the user has requested radiometric data, once per image load or once per frame delivered by stream manager
@@ -100,6 +100,6 @@
  @warning The size parameter is guaranteed to be static per-session, but changing FLIR One devices may alter the size parameter
  
  */
-- (void) FLIROneSDKDelegateManager:(NSObject *)delegateManager didReceiveRadiometricData:(NSData *)radiometricData imageSize:(CGSize)size;
+- (void) FLIROneSDKDelegateManager:(FLIROneSDKDelegateManager *)delegateManager didReceiveRadiometricData:(NSData *)radiometricData imageSize:(CGSize)size;
 
 @end

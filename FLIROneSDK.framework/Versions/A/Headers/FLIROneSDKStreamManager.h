@@ -30,7 +30,7 @@
  @warning Do not attempt to create another instance of this class. Always
  use the sharedInstance class method to retrieve the global singleton.
  */
-@interface FLIROneSDKStreamManager : NSObject <FLIROneSDKImagePropertyController>
+@interface FLIROneSDKStreamManager : FLIROneSDKDelegateManager <FLIROneSDKImagePropertyController>
 
 /**---------------------------------------------------------------------------------------
  * @name Accessing the FLIROneSDKStreamManager sharedInstance

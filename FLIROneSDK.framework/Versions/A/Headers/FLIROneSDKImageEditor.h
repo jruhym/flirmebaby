@@ -33,7 +33,7 @@
  @warning Do not attempt to create another instance of this class. Always
  use the sharedInstance class method to retrieve the global singleton.
  */
-@interface FLIROneSDKImageEditor : NSObject <FLIROneSDKImagePropertyController>
+@interface FLIROneSDKImageEditor : FLIROneSDKDelegateManager <FLIROneSDKImagePropertyController>
 
 /**---------------------------------------------------------------------------------------
  * @name Accessing the FLIROneSDKImageEditor sharedInstance

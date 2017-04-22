@@ -11,17 +11,17 @@ enum Palette: String {
 }
 
 enum FLIRImageOptions: UInt64 {
-    case LinearFlux14Bit = 0x1
-    case ThermalRGBA8888 = 0x2
-    case BlendedMSXRGBA8888 = 0x4
-    case VisualJPEG = 0x8
-    case VisualYCbCr = 0x10
-    case RadiometricKelvinx100 = 0x20
+    case linearFlux14Bit = 0x1
+    case thermalRGBA8888 = 0x2
+    case blendedMSXRGBA8888 = 0x4
+    case visualJPEG = 0x8
+    case visualYCbCr = 0x10
+    case radiometricKelvinx100 = 0x20
 }
 
 typealias VoidClosure = () -> (Void)
 typealias ImageReceptionClosure = (UIImage, CGSize) -> Void
-typealias DataReceptionClosure = (NSData, CGSize) -> Void
+typealias DataReceptionClosure = (Data, CGSize) -> Void
 
 protocol FLIRDataSourceProtocol {
     var palette: Palette { get set }
@@ -34,11 +34,12 @@ protocol FLIRDataSourceProtocol {
 
 class FLIRDataSource: NSObject, FLIRDataSourceProtocol {
 
+    lazy var FLIROneSDKPalettes: [String: FLIROneSDKPalette]! = FLIROneSDKPalette.palettes() as! [String: FLIROneSDKPalette]
     var palette: Palette = .Iron {
         //Did-connect closure is a good place to set this.
         didSet {
-            if let FLIROneSDKPalettes = (FLIROneSDKPalette.palettes() as? [String: FLIROneSDKPalette]), FLIROneSDKPalette = FLIROneSDKPalettes[palette.rawValue] {
-                FLIROneSDKStreamManager.sharedInstance().palette? = FLIROneSDKPalette
+            if let FLIROnePalette = FLIROneSDKPalettes[palette.rawValue] {
+                FLIROneSDKStreamManager.sharedInstance().palette? = FLIROnePalette
             }
         }
     }
@@ -52,7 +53,7 @@ class FLIRDataSource: NSObject, FLIRDataSourceProtocol {
             for imageOption in imageOptions ?? [] {
                 sdkImageOptionsRawValue += imageOption.rawValue
             }
-            if let sdkImageOptions = FLIROneSDKImageOptions(rawValue: sdkImageOptionsRawValue) where sdkImageOptionsRawValue > 0 {
+            if let sdkImageOptions = FLIROneSDKImageOptions(rawValue: sdkImageOptionsRawValue), sdkImageOptionsRawValue > 0 {
                 FLIROneSDKStreamManager.sharedInstance().imageOptions = sdkImageOptions
             }
         }
@@ -60,7 +61,7 @@ class FLIRDataSource: NSObject, FLIRDataSourceProtocol {
     var showDemo: Bool? {
         didSet {
             if (showDemo != nil) {
-                FLIROneSDKSimulation.sharedInstance().connectWithFrameBundleName("sampleframes_hq", withBatteryChargePercentage: 42)
+                FLIROneSDKSimulation.sharedInstance().connect(withFrameBundleName: "sampleframes_hq", withBatteryChargePercentage: 42)
             }
         }
     }
@@ -77,16 +78,17 @@ class FLIRDataSource: NSObject, FLIRDataSourceProtocol {
 
 extension FLIRDataSource: FLIROneSDKImageReceiverDelegate, FLIROneSDKStreamManagerDelegate {
 
-    func FLIROneSDKDidConnect() {
+    func flirOneSDKDidConnect() {
         didConnectClosure?()
     }
 
-    func FLIROneSDKDelegateManager(delegateManager: NSObject!, didReceiveBlendedMSXRGBA8888Image msxImage: NSData!, imageSize size: CGSize) {
-        let image = FLIROneSDKUIImage(format: FLIROneSDKImageOptions.BlendedMSXRGBA8888Image, andData: msxImage, andSize: size)
-        didReceiveImageClosure?(image, size)
+    func flirOneSDKDelegateManager(_ delegateManager: FLIROneSDKDelegateManager!, didReceiveBlendedMSXRGBA8888Image msxImage: Data!, imageSize size: CGSize) {
+        if let image = FLIROneSDKUIImage(format: FLIROneSDKImageOptions.blendedMSXRGBA8888Image, andData: msxImage, andSize: size) {
+            didReceiveImageClosure?(image, size)
+        }
     }
 
-    func FLIROneSDKDelegateManager(delegateManager: NSObject!, didReceiveRadiometricData radiometricData: NSData!, imageSize size: CGSize) {
+    func flirOneSDKDelegateManager(_ delegateManager: FLIROneSDKDelegateManager!, didReceiveRadiometricData radiometricData: Data!, imageSize size: CGSize) {
         didReceiveDataClosure?(radiometricData, size)
     }
 }
