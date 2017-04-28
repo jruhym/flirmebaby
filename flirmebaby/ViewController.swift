@@ -67,6 +67,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         reflection.transform = flip
         flirDataSource = FLIRDataSource()
+        disconnectedView.layer.cornerRadius = 22
+        disconnectedView.clipsToBounds = true
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
