@@ -28,6 +28,7 @@ protocol FLIRDataSourceProtocol {
     var palette: Palette { get set }
     var imageOptions: [FLIRImageOptions]? { get set }
     var didConnectClosure: VoidClosure? { get set }
+    var didDisconnectClosure: VoidClosure? { get set }
     var didReceiveImageClosure: ImageReceptionClosure? { get set }
     var didReceiveDataClosure: DataReceptionClosure? { get set }
     var isDemoShown: Bool { get set }
@@ -47,6 +48,7 @@ class FLIRDataSource: NSObject, FLIRDataSourceProtocol {
     }
 
     var didConnectClosure: VoidClosure?
+    var didDisconnectClosure: VoidClosure?
     var didReceiveImageClosure: ImageReceptionClosure?
     var didReceiveDataClosure: DataReceptionClosure?
     var imageOptions: [FLIRImageOptions]? {
@@ -91,6 +93,11 @@ extension FLIRDataSource: FLIROneSDKImageReceiverDelegate, FLIROneSDKStreamManag
             isDemoRequested = false
         }
         didConnectClosure?()
+    }
+
+    func flirOneSDKDidDisconnect() {
+        isDemoShown = false
+        didDisconnectClosure?()
     }
 
     func flirOneSDKDelegateManager(_ delegateManager: FLIROneSDKDelegateManager!, didReceiveBlendedMSXRGBA8888Image msxImage: Data!, imageSize size: CGSize) {
