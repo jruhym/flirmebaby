@@ -5,6 +5,8 @@ let hundredthsOfKelvinToFarenheitDegrees: Float = 0.018
 let absoluteZeroInFarhenheit: Float = -459.67
 let halfOfFLIRPeriod: TimeInterval = 0.05555555555556
 let flip = CGAffineTransform(scaleX: 1, y: -1)
+let upsideDown = CGAffineTransform(rotationAngle: -CGFloat.pi)
+let rightSideUp = CGAffineTransform(rotationAngle: 0)
 
 class ViewController: UIViewController {
 
@@ -19,6 +21,8 @@ class ViewController: UIViewController {
     @IBOutlet weak fileprivate var minTemperatureCrosshairsY: NSLayoutConstraint!
     @IBOutlet weak fileprivate var fieldOfVision: UIView!
     @IBOutlet weak fileprivate var reflection: UIImageView!
+    @IBOutlet weak fileprivate var disconnectedView: UIVisualEffectView!
+    @IBOutlet weak fileprivate var demoButton: UIButton!
 
     fileprivate var xScaleFactor: CGFloat = 1.0
     fileprivate var yScaleFactor: CGFloat = 1.0
@@ -26,10 +30,24 @@ class ViewController: UIViewController {
     fileprivate var previousSizeOfImage = CGSize()
     fileprivate weak var flirDataSource: FLIRDataSource? {
         didSet {
-            flirDataSource?.imageOptions = [.blendedMSXRGBA8888, .radiometricKelvinx100]//FLIRImageOptions(rawValue: optionsRawValue)
-            flirDataSource?.showDemo = true
+            flirDataSource?.imageOptions = [.blendedMSXRGBA8888, .radiometricKelvinx100]
             flirDataSource?.didConnectClosure = {
                 self.flirDataSource?.palette = .Iron
+                DispatchQueue.main.async {
+                    self.orientImage()
+                    self.disconnectedView.isHidden = true
+                }
+            }
+            flirDataSource?.didDisconnectClosure = {
+                DispatchQueue.main.async {
+                    self.disconnectedView.isHidden = false
+                    let philly = UIImage(named: "Philadelphia")
+                    self.imageView.image = philly
+                    self.reflection.image = philly
+                    self.maxTemperatureLabel.text = "Hot!"
+                    self.minTemperatureLabel.text = "Brr!"
+
+                }
             }
             flirDataSource?.didReceiveImageClosure = { image, size in
                 DispatchQueue.main.async {
@@ -42,11 +60,44 @@ class ViewController: UIViewController {
             }
         }
     }
+    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+        return [.portrait, .portraitUpsideDown]
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         reflection.transform = flip
         flirDataSource = FLIRDataSource()
+        demoButton.layer.cornerRadius = 22
+        disconnectedView.layer.cornerRadius = 22
+        disconnectedView.clipsToBounds = true
+    }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(alongsideTransition: { (context) in
+            self.orientImage()
+        }, completion: nil)
+    }
+
+    @IBAction func showDemo(_ sender: UIButton) {
+        flirDataSource?.showDemo()
+    }
+
+    fileprivate func orientImage() {
+        switch UIDevice.current.orientation {
+        case .portrait:
+            self.fieldOfVision.transform = rightSideUp
+            self.reflection.transform = upsideDown
+        case .portraitUpsideDown:
+            guard let flirDataSource = flirDataSource else {
+                break
+            }
+            let rotationUnnecessary = flirDataSource.isDemoShown || !(self.disconnectedView.isHidden)
+            self.fieldOfVision.transform = rotationUnnecessary ? rightSideUp : upsideDown
+            self.reflection.transform = rotationUnnecessary ? upsideDown : rightSideUp
+        default: break
+        }
     }
 
     func seekHotAndCold(_ radiometricData: Data!, imageSize size: CGSize) {
