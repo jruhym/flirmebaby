@@ -192,6 +192,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="disconnectedView" destination="V5Q-vp-KIM" id="3y7-YE-OhI"/>
                         <outlet property="fieldOfVision" destination="Agu-VI-d9D" id="O1F-vR-ad0"/>
                         <outlet property="imageView" destination="mI2-FF-djY" id="UDu-qf-HNG"/>
                         <outlet property="maxTemperatureCrosshairs" destination="tZC-VN-QOH" id="QF9-fP-qFx"/>
@@ -203,8 +204,6 @@
                         <outlet property="minTemperatureCrosshairsY" destination="DXP-AQ-6K3" id="CvU-gI-ysV"/>
                         <outlet property="minTemperatureLabel" destination="aP5-Lt-TcA" id="8Q2-aY-hR7"/>
                         <outlet property="reflection" destination="cLy-NX-hib" id="jrc-Dm-Mbb"/>
-                        <outletCollection property="viewsWhenDisconnected" destination="gwI-FY-ZbC" collectionClass="NSMutableArray" id="P7m-oo-KFy"/>
-                        <outletCollection property="viewsWhenDisconnected" destination="Lgu-JY-vcD" collectionClass="NSMutableArray" id="5wB-4r-HLQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

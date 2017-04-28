@@ -21,7 +21,7 @@ class ViewController: UIViewController {
     @IBOutlet weak fileprivate var minTemperatureCrosshairsY: NSLayoutConstraint!
     @IBOutlet weak fileprivate var fieldOfVision: UIView!
     @IBOutlet weak fileprivate var reflection: UIImageView!
-    @IBOutlet fileprivate var viewsWhenDisconnected: [UIView]!
+    @IBOutlet weak fileprivate var disconnectedView: UIVisualEffectView!
 
     fileprivate var xScaleFactor: CGFloat = 1.0
     fileprivate var yScaleFactor: CGFloat = 1.0
@@ -34,16 +34,13 @@ class ViewController: UIViewController {
                 self.flirDataSource?.palette = .Iron
                 DispatchQueue.main.async {
                     self.orientImage()
-                    for view in self.viewsWhenDisconnected {
-                        view.isHidden = true
-                    }
+                    self.disconnectedView.isHidden = true
                 }
             }
             flirDataSource?.didDisconnectClosure = {
                 DispatchQueue.main.async {
-                    for view in self.viewsWhenDisconnected {
-                        view.isHidden = false
-                    }
+                    self.disconnectedView.isHidden = false
+                    self.imageView.image = UIImage(named: "Philadelphia")
                 }
             }
             flirDataSource?.didReceiveImageClosure = { image, size in
@@ -87,7 +84,7 @@ class ViewController: UIViewController {
             guard let flirDataSource = flirDataSource else {
                 break
             }
-            let rotationUnnecessary = flirDataSource.isDemoShown
+            let rotationUnnecessary = flirDataSource.isDemoShown || !(self.disconnectedView.isHidden)
             self.fieldOfVision.transform = rotationUnnecessary ? rightSideUp : upsideDown
             self.reflection.transform = rotationUnnecessary ? upsideDown : rightSideUp
         default: break
