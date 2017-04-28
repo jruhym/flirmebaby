@@ -125,15 +125,15 @@
                                 </constraints>
                             </view>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V5Q-vp-KIM" userLabel="Visual Effect View A">
-                                <rect key="frame" x="67" y="283.5" width="240" height="99"/>
+                                <rect key="frame" x="67" y="276.5" width="240" height="113"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="uAR-vK-uPa" userLabel="Visual View">
-                                    <rect key="frame" x="0.0" y="0.0" width="240" height="99"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="240" height="113"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SI9-NE-5ta" userLabel="Visual Effect View B">
-                                            <rect key="frame" x="0.0" y="0.0" width="240" height="99"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="113"/>
                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="5Q1-Ba-neZ">
-                                                <rect key="frame" x="0.0" y="0.0" width="240" height="99"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="240" height="113"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please attach FLIROne." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gwI-FY-ZbC" userLabel="AttachMessage">
@@ -143,7 +143,11 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lgu-JY-vcD" userLabel="DemoButton">
-                                                        <rect key="frame" x="68" y="49" width="104" height="30"/>
+                                                        <rect key="frame" x="68" y="49" width="104" height="44"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="44" id="Kpb-Bj-BPF"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <state key="normal" title="Or show demo."/>
                                                         <connections>
                                                             <action selector="showDemo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="03w-qe-glQ"/>
@@ -160,7 +164,7 @@
                                                 </constraints>
                                             </view>
                                             <vibrancyEffect>
-                                                <blurEffect style="light"/>
+                                                <blurEffect style="prominent"/>
                                             </vibrancyEffect>
                                         </visualEffectView>
                                     </subviews>
