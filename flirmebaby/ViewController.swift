@@ -5,6 +5,8 @@ let hundredthsOfKelvinToFarenheitDegrees: Float = 0.018
 let absoluteZeroInFarhenheit: Float = -459.67
 let halfOfFLIRPeriod: TimeInterval = 0.05555555555556
 let flip = CGAffineTransform(scaleX: 1, y: -1)
+let upsideDown = CGAffineTransform(rotationAngle: -CGFloat.pi)
+let rightSideUp = CGAffineTransform(rotationAngle: 0)
 
 class ViewController: UIViewController {
 
