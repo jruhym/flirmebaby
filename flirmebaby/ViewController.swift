@@ -67,6 +67,13 @@ class ViewController: UIViewController {
         flirDataSource = FLIRDataSource()
     }
 
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(alongsideTransition: { (context) in
+            self.orientImage()
+        }, completion: nil)
+    }
+
     @IBAction func showDemo(_ sender: UIButton) {
         flirDataSource?.showDemo()
     }
