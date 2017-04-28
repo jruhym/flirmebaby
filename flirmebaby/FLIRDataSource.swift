@@ -29,7 +29,8 @@ protocol FLIRDataSourceProtocol {
     var didConnectClosure: VoidClosure? { get set }
     var didReceiveImageClosure: ImageReceptionClosure? { get set }
     var didReceiveDataClosure: DataReceptionClosure? { get set }
-    var showDemo: Bool? { get set }
+    var isDemoShown: Bool { get set }
+    func showDemo()
 }
 
 class FLIRDataSource: NSObject, FLIRDataSourceProtocol {
@@ -58,13 +59,8 @@ class FLIRDataSource: NSObject, FLIRDataSourceProtocol {
             }
         }
     }
-    var showDemo: Bool? {
-        didSet {
-            if (showDemo != nil) {
-                FLIROneSDKSimulation.sharedInstance().connect(withFrameBundleName: "sampleframes_hq", withBatteryChargePercentage: 42)
-            }
-        }
-    }
+    var isDemoShown = false
+    fileprivate var isDemoRequested = false
 
     override init() {
         super.init()
@@ -74,11 +70,25 @@ class FLIRDataSource: NSObject, FLIRDataSourceProtocol {
     deinit {
         FLIROneSDKStreamManager.sharedInstance().removeDelegate(self)
     }
+
+    func showDemo() {
+        guard !isDemoShown else {
+            return
+        }
+        if (FLIROneSDKSimulation.sharedInstance().isAvailable()) {
+            FLIROneSDKSimulation.sharedInstance().connect(withFrameBundleName: "sampleframes_hq", withBatteryChargePercentage: 42)
+            isDemoRequested = true
+        }
+    }
 }
 
 extension FLIRDataSource: FLIROneSDKImageReceiverDelegate, FLIROneSDKStreamManagerDelegate {
 
     func flirOneSDKDidConnect() {
+        if (isDemoRequested) {
+            isDemoShown = true
+            isDemoRequested = false
+        }
         didConnectClosure?()
     }
 

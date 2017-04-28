@@ -27,7 +27,6 @@ class ViewController: UIViewController {
     fileprivate weak var flirDataSource: FLIRDataSource? {
         didSet {
             flirDataSource?.imageOptions = [.blendedMSXRGBA8888, .radiometricKelvinx100]
-            flirDataSource?.showDemo = true
             flirDataSource?.didConnectClosure = {
                 self.flirDataSource?.palette = .Iron
             }
