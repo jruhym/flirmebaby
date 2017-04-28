@@ -1,6 +1,7 @@
 import Foundation
 
 enum Palette: String {
+    case Undefined = ""
     case Arctic = "Arctic"
     case Hottest = "Hottest"
     case Gray = "Gray"
