@@ -40,7 +40,12 @@ class ViewController: UIViewController {
             flirDataSource?.didDisconnectClosure = {
                 DispatchQueue.main.async {
                     self.disconnectedView.isHidden = false
-                    self.imageView.image = UIImage(named: "Philadelphia")
+                    let philly = UIImage(named: "Philadelphia")
+                    self.imageView.image = philly
+                    self.reflection.image = philly
+                    self.maxTemperatureLabel.text = "Hot!"
+                    self.minTemperatureLabel.text = "Brr!"
+
                 }
             }
             flirDataSource?.didReceiveImageClosure = { image, size in
