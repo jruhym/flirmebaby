@@ -32,6 +32,19 @@ class ViewController: UIViewController {
             flirDataSource?.imageOptions = [.blendedMSXRGBA8888, .radiometricKelvinx100]
             flirDataSource?.didConnectClosure = {
                 self.flirDataSource?.palette = .Iron
+                DispatchQueue.main.async {
+                    self.orientImage()
+                    for view in self.viewsWhenDisconnected {
+                        view.isHidden = true
+                    }
+                }
+            }
+            flirDataSource?.didDisconnectClosure = {
+                DispatchQueue.main.async {
+                    for view in self.viewsWhenDisconnected {
+                        view.isHidden = false
+                    }
+                }
             }
             flirDataSource?.didReceiveImageClosure = { image, size in
                 DispatchQueue.main.async {
@@ -52,6 +65,22 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         reflection.transform = flip
         flirDataSource = FLIRDataSource()
+    }
+
+    fileprivate func orientImage() {
+        switch UIDevice.current.orientation {
+        case .portrait:
+            self.fieldOfVision.transform = rightSideUp
+            self.reflection.transform = upsideDown
+        case .portraitUpsideDown:
+            guard let flirDataSource = flirDataSource else {
+                break
+            }
+            let rotationUnnecessary = flirDataSource.isDemoShown
+            self.fieldOfVision.transform = rotationUnnecessary ? rightSideUp : upsideDown
+            self.reflection.transform = rotationUnnecessary ? upsideDown : rightSideUp
+        default: break
+        }
     }
 
     func seekHotAndCold(_ radiometricData: Data!, imageSize size: CGSize) {
