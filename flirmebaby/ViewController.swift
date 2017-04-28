@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     @IBOutlet weak fileprivate var minTemperatureCrosshairsY: NSLayoutConstraint!
     @IBOutlet weak fileprivate var fieldOfVision: UIView!
     @IBOutlet weak fileprivate var reflection: UIImageView!
+    @IBOutlet fileprivate var viewsWhenDisconnected: [UIView]!
 
     fileprivate var xScaleFactor: CGFloat = 1.0
     fileprivate var yScaleFactor: CGFloat = 1.0
@@ -51,6 +52,10 @@ class ViewController: UIViewController {
         flirDataSource = FLIRDataSource()
     }
 
+    @IBAction func showDemo(_ sender: UIButton) {
+        flirDataSource?.showDemo()
+    }
+    
     func seekHotAndCold(_ radiometricData: Data!, imageSize size: CGSize) {
         var maxTemperature = UInt16()
         var minTemperature = UInt16.max
