@@ -67,6 +67,10 @@ class ViewController: UIViewController {
         flirDataSource = FLIRDataSource()
     }
 
+    @IBAction func showDemo(_ sender: UIButton) {
+        flirDataSource?.showDemo()
+    }
+
     fileprivate func orientImage() {
         switch UIDevice.current.orientation {
         case .portrait:
