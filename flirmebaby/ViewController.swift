@@ -41,6 +41,9 @@ class ViewController: UIViewController {
             }
         }
     }
+    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+        return [.portrait, .portraitUpsideDown]
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
