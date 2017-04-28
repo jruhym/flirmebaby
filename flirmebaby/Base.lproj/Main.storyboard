@@ -126,30 +126,33 @@
                                 </constraints>
                             </view>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V5Q-vp-KIM" userLabel="Visual Effect View A">
-                                <rect key="frame" x="67" y="388" width="240" height="113"/>
+                                <rect key="frame" x="65" y="378" width="245" height="133"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="uAR-vK-uPa" userLabel="Visual View">
-                                    <rect key="frame" x="0.0" y="0.0" width="240" height="113"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="245" height="133"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SI9-NE-5ta" userLabel="Visual Effect View B">
-                                            <rect key="frame" x="0.0" y="0.0" width="240" height="113"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="245" height="133"/>
                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="5Q1-Ba-neZ">
-                                                <rect key="frame" x="0.0" y="0.0" width="240" height="113"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="245" height="133"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please attach FLIROne." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gwI-FY-ZbC" userLabel="AttachMessage">
-                                                        <rect key="frame" x="31" y="20" width="177" height="21"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gwI-FY-ZbC" userLabel="AttachMessage">
+                                                        <rect key="frame" x="31" y="20" width="182" height="41"/>
+                                                        <string key="text">Please, attach FLIROne 
+or</string>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lgu-JY-vcD" userLabel="DemoButton">
-                                                        <rect key="frame" x="68" y="49" width="104" height="44"/>
+                                                        <rect key="frame" x="31" y="69" width="182.5" height="44"/>
+                                                        <color key="backgroundColor" red="0.50523546006944442" green="0.5" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="Kpb-Bj-BPF"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                        <state key="normal" title="Or show demo."/>
+                                                        <state key="normal" title="Show demo"/>
                                                         <connections>
                                                             <action selector="showDemo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="03w-qe-glQ"/>
                                                         </connections>
@@ -159,6 +162,7 @@
                                                     <constraint firstAttribute="bottom" secondItem="Lgu-JY-vcD" secondAttribute="bottom" constant="20" id="Iyv-Xa-3tY"/>
                                                     <constraint firstItem="Lgu-JY-vcD" firstAttribute="centerX" secondItem="5Q1-Ba-neZ" secondAttribute="centerX" id="NnD-L7-fLB"/>
                                                     <constraint firstItem="Lgu-JY-vcD" firstAttribute="top" secondItem="gwI-FY-ZbC" secondAttribute="bottom" constant="8" id="QbA-v4-eOL"/>
+                                                    <constraint firstItem="Lgu-JY-vcD" firstAttribute="leading" secondItem="gwI-FY-ZbC" secondAttribute="leading" id="SQr-it-Bex"/>
                                                     <constraint firstItem="gwI-FY-ZbC" firstAttribute="top" secondItem="5Q1-Ba-neZ" secondAttribute="top" constant="20" id="jI9-Al-Q94"/>
                                                     <constraint firstItem="gwI-FY-ZbC" firstAttribute="leading" secondItem="5Q1-Ba-neZ" secondAttribute="leading" constant="31" id="wj3-8H-8Cj"/>
                                                     <constraint firstItem="gwI-FY-ZbC" firstAttribute="centerX" secondItem="5Q1-Ba-neZ" secondAttribute="centerX" id="xqA-Vk-65t"/>
@@ -197,6 +201,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="demoButton" destination="Lgu-JY-vcD" id="JcV-e0-xBI"/>
                         <outlet property="disconnectedView" destination="V5Q-vp-KIM" id="3y7-YE-OhI"/>
                         <outlet property="fieldOfVision" destination="Agu-VI-d9D" id="O1F-vR-ad0"/>
                         <outlet property="imageView" destination="mI2-FF-djY" id="UDu-qf-HNG"/>
