@@ -37,10 +37,10 @@ protocol FLIRDataSourceProtocol {
 class FLIRDataSource: NSObject, FLIRDataSourceProtocol {
 
     lazy var FLIROneSDKPalettes: [String: FLIROneSDKPalette]! = FLIROneSDKPalette.palettes() as! [String: FLIROneSDKPalette]
-    var palette: Palette = .Iron {
-        //Did-connect closure is a good place to set this.
+    var palette: Palette = .Undefined {
+        //Did-connect closure is a good place to initialize this.
         didSet {
-            if let FLIROnePalette = FLIROneSDKPalettes[palette.rawValue] {
+            if palette != oldValue, let FLIROnePalette = FLIROneSDKPalettes[palette.rawValue] {
                 FLIROneSDKStreamManager.sharedInstance().palette? = FLIROnePalette
             }
         }
