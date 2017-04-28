@@ -5,6 +5,8 @@ let hundredthsOfKelvinToFarenheitDegrees: Float = 0.018
 let absoluteZeroInFarhenheit: Float = -459.67
 let halfOfFLIRPeriod: TimeInterval = 0.05555555555556
 let flip = CGAffineTransform(scaleX: 1, y: -1)
+let upsideDown = CGAffineTransform(rotationAngle: -CGFloat.pi)
+let rightSideUp = CGAffineTransform(rotationAngle: 0)
 
 class ViewController: UIViewController {
 
@@ -30,6 +32,19 @@ class ViewController: UIViewController {
             flirDataSource?.imageOptions = [.blendedMSXRGBA8888, .radiometricKelvinx100]
             flirDataSource?.didConnectClosure = {
                 self.flirDataSource?.palette = .Iron
+                DispatchQueue.main.async {
+                    self.orientImage()
+                    for view in self.viewsWhenDisconnected {
+                        view.isHidden = true
+                    }
+                }
+            }
+            flirDataSource?.didDisconnectClosure = {
+                DispatchQueue.main.async {
+                    for view in self.viewsWhenDisconnected {
+                        view.isHidden = false
+                    }
+                }
             }
             flirDataSource?.didReceiveImageClosure = { image, size in
                 DispatchQueue.main.async {
@@ -55,7 +70,23 @@ class ViewController: UIViewController {
     @IBAction func showDemo(_ sender: UIButton) {
         flirDataSource?.showDemo()
     }
-    
+
+    fileprivate func orientImage() {
+        switch UIDevice.current.orientation {
+        case .portrait:
+            self.fieldOfVision.transform = rightSideUp
+            self.reflection.transform = upsideDown
+        case .portraitUpsideDown:
+            guard let flirDataSource = flirDataSource else {
+                break
+            }
+            let rotationUnnecessary = flirDataSource.isDemoShown
+            self.fieldOfVision.transform = rotationUnnecessary ? rightSideUp : upsideDown
+            self.reflection.transform = rotationUnnecessary ? upsideDown : rightSideUp
+        default: break
+        }
+    }
+
     func seekHotAndCold(_ radiometricData: Data!, imageSize size: CGSize) {
         var maxTemperature = UInt16()
         var minTemperature = UInt16.max
