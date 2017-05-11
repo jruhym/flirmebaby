@@ -4,7 +4,8 @@ let sizeOfMeasurment = MemoryLayout<UInt16>.size
 let hundredthsOfKelvinToFarenheitDegrees: Float = 0.018
 let absoluteZeroInFarhenheit: Float = -459.67
 let halfOfFLIRPeriod: TimeInterval = 0.05555555555556
-let flip = CGAffineTransform(scaleX: 1, y: -1)
+let verticalFlip = CGAffineTransform(scaleX: 1, y: -1)
+let horizontalFlip = CGAffineTransform(scaleX: -1, y: 1)
 let upsideDown = CGAffineTransform(rotationAngle: -CGFloat.pi)
 let rightSideUp = CGAffineTransform(rotationAngle: 0)
 
@@ -66,7 +67,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        reflection.transform = flip
+        reflection.transform = verticalFlip
         flirDataSource = FLIRDataSource()
         demoButton.layer.cornerRadius = 22
         disconnectedView.layer.cornerRadius = 22
@@ -88,14 +89,14 @@ class ViewController: UIViewController {
         switch UIDevice.current.orientation {
         case .portrait:
             self.fieldOfVision.transform = rightSideUp
-            self.reflection.transform = upsideDown
+            self.reflection.transform = verticalFlip
         case .portraitUpsideDown:
             guard let flirDataSource = flirDataSource else {
                 break
             }
             let rotationUnnecessary = flirDataSource.isDemoShown || !(self.disconnectedView.isHidden)
             self.fieldOfVision.transform = rotationUnnecessary ? rightSideUp : upsideDown
-            self.reflection.transform = rotationUnnecessary ? upsideDown : rightSideUp
+            self.reflection.transform = rotationUnnecessary ? verticalFlip : horizontalFlip
         default: break
         }
     }
