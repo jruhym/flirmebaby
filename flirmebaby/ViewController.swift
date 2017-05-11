@@ -34,8 +34,8 @@ class ViewController: UIViewController {
             flirDataSource?.didConnectClosure = {
                 self.flirDataSource?.palette = .Iron
                 DispatchQueue.main.async {
-                    self.orientImage()
                     self.disconnectedView.isHidden = true
+                    self.orientImage()
                 }
             }
             flirDataSource?.didDisconnectClosure = {
