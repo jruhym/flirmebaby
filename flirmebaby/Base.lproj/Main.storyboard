@@ -211,7 +211,6 @@ or</string>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="demoButton" destination="Lgu-JY-vcD" id="JcV-e0-xBI"/>
                         <outlet property="disconnectedView" destination="V5Q-vp-KIM" id="3y7-YE-OhI"/>
                         <outlet property="fieldOfVision" destination="Agu-VI-d9D" id="O1F-vR-ad0"/>
                         <outlet property="imageView" destination="mI2-FF-djY" id="UDu-qf-HNG"/>

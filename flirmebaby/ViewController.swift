@@ -23,7 +23,6 @@ class ViewController: UIViewController {
     @IBOutlet weak fileprivate var fieldOfVision: UIView!
     @IBOutlet weak fileprivate var reflection: UIImageView!
     @IBOutlet weak fileprivate var disconnectedView: UIVisualEffectView!
-    @IBOutlet weak fileprivate var demoButton: UIButton!
 
     fileprivate var xScaleFactor: CGFloat = 1.0
     fileprivate var yScaleFactor: CGFloat = 1.0
