@@ -125,7 +125,7 @@
                                     <constraint firstItem="mI2-FF-djY" firstAttribute="leading" secondItem="Agu-VI-d9D" secondAttribute="leading" id="ghQ-OR-V0N"/>
                                 </constraints>
                             </view>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V5Q-vp-KIM" userLabel="Visual Effect View A">
+                            <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V5Q-vp-KIM" userLabel="Visual Effect View A">
                                 <rect key="frame" x="65" y="378" width="245" height="133"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="uAR-vK-uPa" userLabel="Visual View">
                                     <rect key="frame" x="0.0" y="0.0" width="245" height="133"/>
