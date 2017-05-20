@@ -125,7 +125,7 @@
                                     <constraint firstItem="mI2-FF-djY" firstAttribute="leading" secondItem="Agu-VI-d9D" secondAttribute="leading" id="ghQ-OR-V0N"/>
                                 </constraints>
                             </view>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V5Q-vp-KIM" userLabel="Visual Effect View A">
+                            <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V5Q-vp-KIM" userLabel="Visual Effect View A">
                                 <rect key="frame" x="65" y="378" width="245" height="133"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="uAR-vK-uPa" userLabel="Visual View">
                                     <rect key="frame" x="0.0" y="0.0" width="245" height="133"/>
@@ -153,6 +153,11 @@ or</string>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <state key="normal" title="Show demo"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="22"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="showDemo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="03w-qe-glQ"/>
                                                         </connections>
@@ -181,27 +186,31 @@ or</string>
                                     </constraints>
                                 </view>
                                 <blurEffect style="dark"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="22"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="V5Q-vp-KIM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="6IU-OX-hNb"/>
-                            <constraint firstAttribute="trailing" secondItem="sdl-PY-WYV" secondAttribute="trailing" id="7NR-Cv-NFe"/>
                             <constraint firstItem="V5Q-vp-KIM" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="4:3" id="8eK-eG-NNQ"/>
                             <constraint firstItem="cLy-NX-hib" firstAttribute="centerX" secondItem="Agu-VI-d9D" secondAttribute="centerX" id="9cp-1T-0kS"/>
                             <constraint firstItem="cLy-NX-hib" firstAttribute="top" secondItem="sdl-PY-WYV" secondAttribute="top" id="Azs-dq-nE5"/>
                             <constraint firstItem="cLy-NX-hib" firstAttribute="height" secondItem="Agu-VI-d9D" secondAttribute="height" id="EE1-LI-hZ5"/>
                             <constraint firstItem="Agu-VI-d9D" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="KbQ-Yc-LoV"/>
                             <constraint firstItem="sdl-PY-WYV" firstAttribute="top" secondItem="Agu-VI-d9D" secondAttribute="bottom" id="Rg0-gJ-GGW"/>
-                            <constraint firstItem="sdl-PY-WYV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Wr9-Fe-dv7"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="sdl-PY-WYV" secondAttribute="bottom" id="mqw-s0-bMM"/>
                             <constraint firstItem="cLy-NX-hib" firstAttribute="width" secondItem="Agu-VI-d9D" secondAttribute="width" id="qqb-bN-Rop"/>
+                            <constraint firstItem="sdl-PY-WYV" firstAttribute="leading" secondItem="Agu-VI-d9D" secondAttribute="leading" id="qup-NQ-dnB"/>
+                            <constraint firstItem="sdl-PY-WYV" firstAttribute="trailing" secondItem="Agu-VI-d9D" secondAttribute="trailing" id="rTj-pf-kKq"/>
                             <constraint firstItem="Agu-VI-d9D" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="zda-zp-BOs"/>
                             <constraint firstItem="Agu-VI-d9D" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="zhI-NI-Srt"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="demoButton" destination="Lgu-JY-vcD" id="JcV-e0-xBI"/>
                         <outlet property="disconnectedView" destination="V5Q-vp-KIM" id="3y7-YE-OhI"/>
                         <outlet property="fieldOfVision" destination="Agu-VI-d9D" id="O1F-vR-ad0"/>
                         <outlet property="imageView" destination="mI2-FF-djY" id="UDu-qf-HNG"/>
