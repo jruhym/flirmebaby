@@ -41,5 +41,7 @@
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Given permission, the FLIR One SDK, upon which $(PRODUCT_NAME) depends, geotags images. Otherwise $(PRODUCT_NAME) has no use for your location. You should deny this request.</string>
 </dict>
 </plist>
