@@ -127,7 +127,7 @@
 				TargetAttributes = {
 					3AF762061CC986C100599F6D = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = L7T2AVBQUK;
+						DevelopmentTeam = 6939G5S6UD;
 						LastSwiftMigration = 0820;
 					};
 				};
@@ -291,7 +291,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = L7T2AVBQUK;
+				DEVELOPMENT_TEAM = 6939G5S6UD;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -300,7 +300,7 @@
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/FLIROneSDK.framework/Headers";
 				INFOPLIST_FILE = flirmebaby/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ultravioletcatastrophe.flirmebaby;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bleepblorpcorp.flirmebaby;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "flirmebaby/flirmebaby-Bridging-Header.h";
@@ -317,7 +317,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = L7T2AVBQUK;
+				DEVELOPMENT_TEAM = 6939G5S6UD;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -326,7 +326,7 @@
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/FLIROneSDK.framework/Headers";
 				INFOPLIST_FILE = flirmebaby/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ultravioletcatastrophe.flirmebaby;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bleepblorpcorp.flirmebaby;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "flirmebaby/flirmebaby-Bridging-Header.h";
