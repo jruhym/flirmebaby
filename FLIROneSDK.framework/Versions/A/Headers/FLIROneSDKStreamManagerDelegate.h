@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <FLIROneSDK/FLIROneSDKImageReceiverDelegate.h>
+#import <GLKit/GLKit.h>
 
 /**
  The stream delegate provides users with the ability to detect connection events, tuning information, and battery status, as well as capture videos and thermal images to disk
@@ -22,7 +23,7 @@
  *  ---------------------------------------------------------------------------------------
  */
 /**
- Triggered just after the FLIR ONE device has established communication. This is the first event received when a device connects. You MUST be connected to the FLIR ONE device in order to receive frames or any information from the sled. If your application is not receiving this event insure that the project dependencies are set up correctly and that the sled is working.
+ Triggered just after the FLIR ONE device has established communication. This is the first event received when a device connects. You MUST be connected to the FLIR ONE device in order to receive frames or any information from the device. If your application is not receiving this event insure that the project dependencies are set up correctly and that the device is working.
  
  When this event is triggered the app should track that the state of the app has been connected and update the UI. Before this event is triggered the UI should ask the user to connect their device.
  
@@ -52,7 +53,6 @@
  @see FLIROneSDKBatteryChargingState
  @see FLIROneSDKBatteryPercentageDidChange:
  @warning It is important to always update the UI on the main thread.
- @deprecated This method is currently not yet implemented and will never be called
  */
 - (void) FLIROneSDKBatteryChargingStateDidChange:(FLIROneSDKBatteryChargingState) state;
 
@@ -63,7 +63,6 @@
  
  @see FLIROneSDKBatteryChargingStateDidChange:
  @warning It is important to always update the UI on the main thread.
- @deprecated This method is currently not yet implemented and will never be called
  */
 - (void) FLIROneSDKBatteryPercentageDidChange:(NSNumber *) percentage;
 
@@ -99,7 +98,7 @@
  
  @param captureStatus The result of the photo capture. Indicates whether or not the capture completed successfully.
  @param filepath If the capture was successful, will be a NSURL representing the location of the captured photo, otherwise
- nil. Use this string with the FLIROneSDKLibraryManager singleton instance to retrieve a thumbnail and the absolute file path of the video.
+ nil.
  
  @see [FLIROneSDKStreamManager capturePhotoWithFilepath:]
  @see FLIROneSDKLibraryManager
@@ -140,7 +139,7 @@
  
  @param captureWriteStatus The result of attempting to write the video to disk.
  @param filepath If the file was successfully written to disk, will be a NSURL representing the location of the saved video, otherwise nil.
- Use this string with the FLIROneSDKLibraryManager singleton instance to retrieve a thumbnail and the absolute file path of the video.
+
  
  @warning If FLIROneSDKDidStartRecordingVideo was triggered with an error result, this method will not be triggered.
  
@@ -150,5 +149,15 @@
  */
 
 - (void) FLIROneSDKDidFinishWritingVideo:(FLIROneSDKCaptureStatus)captureWriteStatus withFilepath:(NSURL *)filepath;
+
+/**
+ Triggered when a glkView has been set and the SDK has updated its contents.
+ 
+ @param glkView The GLKView instance which was updated
+ @param sequenceNumber The sequence number(0-255) of the frame which was rendered to the GLKView
+ 
+ */
+
+- (void) FLIROneSDKDidRenderToGLKView:(GLKView *)glkView sequenceNumber:(NSInteger)sequenceNumber;
 
 @end

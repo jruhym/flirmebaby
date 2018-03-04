@@ -41,6 +41,8 @@
  The current emissivity used for the thermal component of the stream.
  You may read and write the value of this property from any thread safely.
  
+ Valid values for emissivity range from 0.0 to 1.0
+ 
  To update the current emissivity that incoming frames will be colorized with you must set the value of this property to a double, optionally using one of four preset values. For example:
  
  [[FLIROneSDKStreamManager sharedInstance] setEmissivity:FLIROneSDKEmissivityGlossy];
@@ -51,7 +53,7 @@
 @property (readwrite, nonatomic) CGFloat emissivity;
 
 /**
- The image options dictate what formats are delivered from the sled during streaming or image editing.
+ The image options dictate what formats are delivered from the device during streaming or image editing.
  
  Specifying image options in the Stream Manager affects which callbacks you will receive on the next frame.
  @see [FLIROneSDKImageReceiverDelegate FLIROneSDKDelegateManager:didReceiveFrameWithOptions:metadata:];
