@@ -87,7 +87,7 @@ class ViewController: UIViewController {
 
     fileprivate func orientImage() {
         switch UIDevice.current.orientation {
-        case .portrait:
+        case .portrait, .faceUp, .faceDown:
             self.fieldOfVision.transform = rightSideUp
             self.reflection.transform = verticalFlip
         case .portraitUpsideDown:
