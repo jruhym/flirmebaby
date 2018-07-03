@@ -53,7 +53,7 @@ typedef NS_ENUM(NSInteger, FLIROneSDKBatteryChargingState) {
 };
 
 /**
- The state of the "tuning" status of the FLIR ONE device. The tuning status is updated when the sled determines that its temperature points are becoming inaccurate or if the user initiates tuning by pulling down on the shutter handle
+ The state of the "tuning" status of the FLIR ONE device. The tuning status is updated when the device determines that its temperature points are becoming inaccurate or, in the case of a gen 1 sled, if the user initiates tuning by pulling down on the shutter handle
  
  @note It is important to update the user with the progress of tuning. Keep in mind all UI updates should be performed on the main thread.
  
@@ -163,6 +163,12 @@ typedef NS_ENUM(uint64_t, FLIROneSDKImageOptions) {
      @note The data is in units of kelvin * 100, so 273.15ºK is represented as 27,315
      */
     FLIROneSDKImageOptionsThermalRadiometricKelvinImage = 0x20,
+    /**
+     Radiometric kelvin temperature data
+     
+     @note The data is float representation of Kelvin temperatures
+     */
+    FLIROneSDKImageOptionsThermalRadiometricKelvinImageFloat = 0x40,
 };
 
 typedef struct {
@@ -182,5 +188,25 @@ extern const CGFloat FLIROneSDKEmissivityMatte;
 extern const CGFloat FLIROneSDKEmissivitySemiMatte;
 extern const CGFloat FLIROneSDKEmissivitySemiGlossy;
 extern const CGFloat FLIROneSDKEmissivityGlossy;
+
+/**
+ Vivid IR Quality allows user to optionally change the quality of FLIR One Pro (Gen 3) streamed images. This value defaults to High but can be set to Low or None to lower quality and improve framerate.
+ 
+ @note Vivid IR is not available on FLIR One Consumer (Gen 3) and Gen 2 devices, so this value is always None for these devices
+ */
+typedef NS_ENUM(uint64_t, FLIROneSDKVividIRQuality) {
+    /**
+     No Vivid IR
+     */
+    FLIROneSDKVividIRQualityNone,
+    /**
+     Low Quality Vivid IR
+     */
+    FLIROneSDKVividIRQualityLow,
+    /**
+     High Quality Vivid IR
+     */
+    FLIROneSDKVividIRQualityHigh,
+};
 
 #endif

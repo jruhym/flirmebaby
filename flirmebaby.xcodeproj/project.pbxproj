@@ -7,21 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3A12562C1CCE713F0056DF68 /* sampleframes_hq.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3A12562B1CCE713F0056DF68 /* sampleframes_hq.bundle */; };
+		3A469B9B202FB3F40030E204 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A469B9A202FB3F40030E204 /* opencv2.framework */; };
+		3A469B9D202FB4910030E204 /* FLIROneSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A469B9C202FB4910030E204 /* FLIROneSDK.framework */; };
+		3A469B9F202FB4B60030E204 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A469B9E202FB4B60030E204 /* AssetsLibrary.framework */; };
+		3A469BA1202FB9680030E204 /* sampleframes_hq.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3A469BA0202FB9680030E204 /* sampleframes_hq.bundle */; };
+		3A469BA3202FB9F00030E204 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A469BA2202FB9F00030E204 /* GLKit.framework */; };
 		3A674E371D36B449005C3943 /* FLIRDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A674E361D36B449005C3943 /* FLIRDataSource.swift */; };
 		3AF7620B1CC986C100599F6D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF7620A1CC986C100599F6D /* AppDelegate.swift */; };
 		3AF7620D1CC986C100599F6D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF7620C1CC986C100599F6D /* ViewController.swift */; };
 		3AF762101CC986C100599F6D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AF7620E1CC986C100599F6D /* Main.storyboard */; };
 		3AF762121CC986C100599F6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AF762111CC986C100599F6D /* Assets.xcassets */; };
 		3AF762151CC986C100599F6D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AF762131CC986C100599F6D /* LaunchScreen.storyboard */; };
-		3AF7621E1CC988DD00599F6D /* FLIROneSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AF7621D1CC988DD00599F6D /* FLIROneSDK.framework */; };
 		3AF762201CC9890B00599F6D /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AF7621F1CC9890B00599F6D /* Accelerate.framework */; };
 		3AF762221CC9896D00599F6D /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AF762211CC9896D00599F6D /* libstdc++.tbd */; };
 		3AF762241CC98F5A00599F6D /* FLIROneSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3AF762231CC98F5A00599F6D /* FLIROneSDK.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3A12562B1CCE713F0056DF68 /* sampleframes_hq.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = sampleframes_hq.bundle; sourceTree = "<group>"; };
+		3A469B9A202FB3F40030E204 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
+		3A469B9C202FB4910030E204 /* FLIROneSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FLIROneSDK.framework; sourceTree = "<group>"; };
+		3A469B9E202FB4B60030E204 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		3A469BA0202FB9680030E204 /* sampleframes_hq.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = sampleframes_hq.bundle; sourceTree = "<group>"; };
+		3A469BA2202FB9F00030E204 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		3A674E361D36B449005C3943 /* FLIRDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FLIRDataSource.swift; sourceTree = "<group>"; };
 		3AF762071CC986C100599F6D /* flirmebaby.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = flirmebaby.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AF7620A1CC986C100599F6D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -30,7 +37,6 @@
 		3AF762111CC986C100599F6D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3AF762141CC986C100599F6D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3AF762161CC986C100599F6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3AF7621D1CC988DD00599F6D /* FLIROneSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FLIROneSDK.framework; sourceTree = "<group>"; };
 		3AF7621F1CC9890B00599F6D /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		3AF762211CC9896D00599F6D /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		3AF762231CC98F5A00599F6D /* FLIROneSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FLIROneSDK.bundle; sourceTree = "<group>"; };
@@ -42,9 +48,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3AF762221CC9896D00599F6D /* libstdc++.tbd in Frameworks */,
 				3AF762201CC9890B00599F6D /* Accelerate.framework in Frameworks */,
-				3AF7621E1CC988DD00599F6D /* FLIROneSDK.framework in Frameworks */,
+				3A469B9F202FB4B60030E204 /* AssetsLibrary.framework in Frameworks */,
+				3A469B9B202FB3F40030E204 /* opencv2.framework in Frameworks */,
+				3AF762221CC9896D00599F6D /* libstdc++.tbd in Frameworks */,
+				3A469B9D202FB4910030E204 /* FLIROneSDK.framework in Frameworks */,
+				3A469BA3202FB9F00030E204 /* GLKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,11 +95,14 @@
 		3AF7621C1CC988B500599F6D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3A12562B1CCE713F0056DF68 /* sampleframes_hq.bundle */,
+				3A469BA2202FB9F00030E204 /* GLKit.framework */,
+				3A469BA0202FB9680030E204 /* sampleframes_hq.bundle */,
+				3A469B9E202FB4B60030E204 /* AssetsLibrary.framework */,
+				3A469B9C202FB4910030E204 /* FLIROneSDK.framework */,
+				3A469B9A202FB3F40030E204 /* opencv2.framework */,
 				3AF762231CC98F5A00599F6D /* FLIROneSDK.bundle */,
 				3AF762211CC9896D00599F6D /* libstdc++.tbd */,
 				3AF7621F1CC9890B00599F6D /* Accelerate.framework */,
-				3AF7621D1CC988DD00599F6D /* FLIROneSDK.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -122,12 +134,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = Tonic;
 				TargetAttributes = {
 					3AF762061CC986C100599F6D = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = L7T2AVBQUK;
+						DevelopmentTeam = 6939G5S6UD;
 						LastSwiftMigration = 0820;
 					};
 				};
@@ -156,7 +168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AF762151CC986C100599F6D /* LaunchScreen.storyboard in Resources */,
-				3A12562C1CCE713F0056DF68 /* sampleframes_hq.bundle in Resources */,
+				3A469BA1202FB9680030E204 /* sampleframes_hq.bundle in Resources */,
 				3AF762121CC986C100599F6D /* Assets.xcassets in Resources */,
 				3AF762241CC98F5A00599F6D /* FLIROneSDK.bundle in Resources */,
 				3AF762101CC986C100599F6D /* Main.storyboard in Resources */,
@@ -207,13 +219,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -253,13 +275,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -279,6 +311,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -291,7 +324,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = L7T2AVBQUK;
+				DEVELOPMENT_TEAM = 6939G5S6UD;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -300,7 +333,7 @@
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/FLIROneSDK.framework/Headers";
 				INFOPLIST_FILE = flirmebaby/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ultravioletcatastrophe.flirmebaby;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bleepblorpcorp.flirmebaby;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "flirmebaby/flirmebaby-Bridging-Header.h";
@@ -317,7 +350,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = L7T2AVBQUK;
+				DEVELOPMENT_TEAM = 6939G5S6UD;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -326,7 +359,7 @@
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/FLIROneSDK.framework/Headers";
 				INFOPLIST_FILE = flirmebaby/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ultravioletcatastrophe.flirmebaby;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bleepblorpcorp.flirmebaby;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "flirmebaby/flirmebaby-Bridging-Header.h";

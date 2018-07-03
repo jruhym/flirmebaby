@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIGeometry.h>
+#import <GLKit/GLKit.h>
 
 #import <FLIROneSDK/FLIROneSDKImagePropertyController.h>
 #import <FLIROneSDK/FLIROneSDKStreamManagerDelegate.h>
@@ -30,7 +31,7 @@
  @warning Do not attempt to create another instance of this class. Always
  use the sharedInstance class method to retrieve the global singleton.
  */
-@interface FLIROneSDKStreamManager : FLIROneSDKDelegateManager <FLIROneSDKImagePropertyController>
+@interface FLIROneSDKStreamManager : FLIROneSDKDelegateManager <FLIROneSDKImagePropertyController, GLKViewDelegate>
 
 /**---------------------------------------------------------------------------------------
  * @name Accessing the FLIROneSDKStreamManager sharedInstance
@@ -81,9 +82,6 @@
  @note Calling this method while recording has already started will not affect
  the current recording, but will still result in the delegate callback firing.
  
- @note This method will save a thumbnail to the given location by appending ".thumb" to the filepath
- @note This method will save a full-size preview of the video to the given location by appending ".preview" to the filepath
- 
  @see [FLIROneSDKStreamManagerDelegate FLIROneSDKDidStartRecordingVideo:]
  @see [FLIROneSDKLibraryManager mediaPath]
  @see [FLIROneSDKLibraryManager libraryFilepathForCurrentTimestampWithExtension:]
@@ -120,9 +118,7 @@
  @warning You must wait for the FLIROneSDKDidFinishCapturingPhoto:withFilepath: callback to fire
  before calling this method again, or the request will fail immediately.
  
- @warning Do not attempt to capture photos while the sled is in a tuning state. Wait until tuning has completed before capturing media to the library
- 
- @note This method will save a thumbnail to the given location by appending ".thumb" to the filepath
+ @warning Do not attempt to capture photos while the device is in a tuning state. Wait until tuning has completed before capturing media to the library
  
  @see [FLIROneSDKStreamManagerDelegate FLIROneSDKDidFinishCapturingPhoto:withFilepath:]
  @see [FLIROneSDKImageEditor loadImageWithFilepath:]
@@ -149,6 +145,16 @@
 - (BOOL) isDongle;
 
 /**
+ Determine whether the device connected is a FLIR One Gen 3 Device (Pro or Consumer)
+ */
+- (BOOL) isGen3Dongle;
+
+/**
+ Determine whether the device connected is a FLIR One Pro (Gen 3)
+ */
+- (BOOL) isProDongle;
+
+/**
  Flag indicating whether or not MSX distance is enabled.
  MSX distance controls the alignment of the visual and thermal elements of a MSX image.
  */
@@ -159,6 +165,55 @@
  */
 @property (readwrite, nonatomic) CGFloat msxDistance;
 
+/**
+ When connected to a FLIR One Pro (Gen 3) device, this property optionally 
+ controls the image's "Vivid IR" quality. Higher quality images may take longer to render
+ on some devices, so lower quality may be desired if the framerate drops.
+ 
+ @note Vivid IR is not available on FLIR One Consumer (Gen 3) or Gen 2 devices, so this property is always FLIROneSDKVividIRQualityNone
+ */
+@property (readwrite, nonatomic) FLIROneSDKVividIRQuality vividIRQuality;
+
+/**
+ Enable or disable dropping frames in order to render data in real time.
+ 
+ @note If disabled, SDK will render every frame, but this may cause increased latency to the point where the application crashes
+ */
+@property (readwrite, nonatomic) BOOL frameDropEnabled;
+
+
+/**
+ An optional GLKView on which to render the stream data
+ 
+ When set to a valid GLKView instance, the SDK will render a stream to this surface using the desired image option.
+ When set to nil, the pipeline will no longer render to a gl surface.
+ This GLKView can be used simultaneously with the other callbacks for various image formats, as well as capturing images and recording video.
+ 
+ @note Developers should set this property to nil when the app is about to navigate away from the previously set GLKView
+ 
+ @note Do not overwrite the GLKView's properties such as delegate or enableSetNeedsDisplay, as these properties will be initially set upon changing the stream manager's glkView property, and should not be modified for the duration that the GLKView is being used by the FLIROneSDKStreamManager class
+ 
+ @note Do not call setNeedsDisplay on the GLKView directly, as the drawing will be handled directly by the FLIROneSDKStreamManager class
+ 
+ @note It is possible but not advised to use a GLKView managed by a GLKViewController class. However, in order to function properly the GLKViewController's paused property will have to be set to YES on viewWillAppear, and its resumeOnActive property should be set to NO
+ 
+ @see glkViewImageOptions
+ */
+@property (weak, nonatomic) GLKView *glkView;
+
+/**
+ The image option representing the channel which is rendered to the glkView.
+ 
+ @note You may only select one image option, and it must be either FLIROneSDKImageOptionsThermalRGBA8888Image, FLIROneSDKImageOptionsBlendedMSXRGBA8888Image, or FLIROneSDKImageOptionsVisualYCbCr888Image
+ */
+
+@property (readwrite, nonatomic) FLIROneSDKImageOptions glkViewImageOptions;
+
+/**
+ Enable or disable span lock for IR colorization
+ */
+
+@property (readwrite, nonatomic) BOOL spanLockEnabled;
 
 
 @end

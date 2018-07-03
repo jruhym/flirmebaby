@@ -81,13 +81,8 @@
  
  @param filepath The filepath location to load the image from
  
- @note If you simply need to retrieve a thumbnail for a file, use the FLIROneSDKLibraryManager's
- thumbnailForFilename method.
- 
  @see finishEditingAndSaveCurrentImageToFilepath:withPreviewImage:
  @see [FLIROneSDKStreamManager capturePhotoWithFilepath:]
- @see FLIROneSDKLibraryManager
- @see [FLIROneSDKLibraryManager thumbnailForFilepath:]
  */
 
 - (void) loadImageWithFilepath:(NSURL *)filepath;
@@ -110,7 +105,6 @@
  @param previewImage The preview image to use with the JPEG's dipslay image and thumbnail file
  
  @see loadImageWithFilepath:
- @see FLIROneSDKLibraryManager
  */
 
 - (void)finishEditingAndSaveCurrentImageToFilepath:(NSURL *)filepath withPreviewImage:(UIImage *)previewImage;

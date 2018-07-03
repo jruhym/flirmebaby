@@ -87,7 +87,7 @@ class ViewController: UIViewController {
 
     fileprivate func orientImage() {
         switch UIDevice.current.orientation {
-        case .portrait:
+        case .portrait, .faceUp, .faceDown:
             self.fieldOfVision.transform = rightSideUp
             self.reflection.transform = verticalFlip
         case .portraitUpsideDown:
@@ -107,8 +107,8 @@ class ViewController: UIViewController {
         var memoryPositionOfMaximumTemperature = 0
         var memoryPositionOfMinimumTemperature = 0
         var currentMemoryPosition = 0
-
-        radiometricData.enumerateBytes {(buffer: UnsafeBufferPointer<UInt8>, length: Data.Index, stop: inout Bool) in
+        let length = radiometricData.count / MemoryLayout<UInt8>.size
+        radiometricData.enumerateBytes {(buffer: UnsafeBufferPointer<UInt8>, unused: Data.Index, stop: inout Bool) in
             while currentMemoryPosition < length {
                 guard let baseAddress = buffer.baseAddress else {
                     return

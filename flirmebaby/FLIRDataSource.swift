@@ -93,6 +93,16 @@ class FLIRDataSource: NSObject, FLIRDataSourceProtocol {
 
 extension FLIRDataSource: FLIROneSDKImageReceiverDelegate, FLIROneSDKStreamManagerDelegate {
 
+    func flirOneSDKDelegateManager(_ delegateManager: FLIROneSDKDelegateManager!, didReceiveRadiometricData radiometricData: Data!, imageSize size: CGSize, sequenceNumber: Int) {
+        didReceiveDataClosure?(radiometricData, size)
+    }
+
+    func flirOneSDKDelegateManager(_ delegateManager: FLIROneSDKDelegateManager!, didReceiveBlendedMSXRGBA8888Image msxImage: Data!, imageSize size: CGSize, sequenceNumber: Int) {
+        if let image = FLIROneSDKUIImage(format: FLIROneSDKImageOptions.blendedMSXRGBA8888Image, andData: msxImage, andSize: size) {
+            didReceiveImageClosure?(image, size)
+        }
+    }
+
     func flirOneSDKDidConnect() {
         if (isDemoRequested) {
             isDemoShown = true
@@ -104,15 +114,5 @@ extension FLIRDataSource: FLIROneSDKImageReceiverDelegate, FLIROneSDKStreamManag
     func flirOneSDKDidDisconnect() {
         isDemoShown = false
         didDisconnectClosure?()
-    }
-
-    func flirOneSDKDelegateManager(_ delegateManager: FLIROneSDKDelegateManager!, didReceiveBlendedMSXRGBA8888Image msxImage: Data!, imageSize size: CGSize) {
-        if let image = FLIROneSDKUIImage(format: FLIROneSDKImageOptions.blendedMSXRGBA8888Image, andData: msxImage, andSize: size) {
-            didReceiveImageClosure?(image, size)
-        }
-    }
-
-    func flirOneSDKDelegateManager(_ delegateManager: FLIROneSDKDelegateManager!, didReceiveRadiometricData radiometricData: Data!, imageSize size: CGSize) {
-        didReceiveDataClosure?(radiometricData, size)
     }
 }

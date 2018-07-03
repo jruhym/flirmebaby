@@ -28,7 +28,21 @@
 
 /**
  An dictionary mapping string names to corresponding palettes.
+ 
+ Existing palettes are:
+ 
+ * arctic
+ * Coldest
+ * rainHC
+ * whitehot
+ * Hottest
+ * iron
+ * lava
+ * rainbow
+ * ColorWheel6
+
  */
+
 +(NSDictionary *)palettes;
 
 /**---------------------------------------------------------------------------------------
