@@ -1,14 +1,14 @@
 import Foundation
 
 enum Palette: String {
-    case Undefined = ""
-    case Arctic = "Arctic"
-    case Hottest = "Hottest"
-    case Gray = "Gray"
-    case Iron = "Iron"
-    case Contrast = "Contrast"
-    case Rainbow = "Rainbow"
-    case Coldest = "Coldest"
+    case undefined = ""
+    case arctic = "Arctic"
+    case hottest = "Hottest"
+    case gray = "Gray"
+    case iron = "Iron"
+    case contrast = "Contrast"
+    case rainbow = "Rainbow"
+    case coldest = "Coldest"
 }
 
 enum FLIRImageOptions: UInt64 {
@@ -20,7 +20,7 @@ enum FLIRImageOptions: UInt64 {
     case radiometricKelvinx100 = 0x20
 }
 
-typealias VoidClosure = () -> (Void)
+typealias VoidClosure = () -> Void
 typealias ImageReceptionClosure = (UIImage, CGSize) -> Void
 typealias DataReceptionClosure = (Data, CGSize) -> Void
 
@@ -37,11 +37,11 @@ protocol FLIRDataSourceProtocol {
 
 class FLIRDataSource: NSObject, FLIRDataSourceProtocol {
 
-    lazy var FLIROneSDKPalettes: [String: FLIROneSDKPalette]! = FLIROneSDKPalette.palettes() as! [String: FLIROneSDKPalette]
-    var palette: Palette = .Undefined {
+    lazy var FLIROneSDKPalettes: [String: FLIROneSDKPalette]? = FLIROneSDKPalette.palettes() as? [String: FLIROneSDKPalette]
+    var palette: Palette = .undefined {
         //Did-connect closure is a good place to initialize this.
         didSet {
-            if palette != oldValue, let FLIROnePalette = FLIROneSDKPalettes[palette.rawValue] {
+            if palette != oldValue, let FLIROnePalette = FLIROneSDKPalettes?[palette.rawValue] {
                 FLIROneSDKStreamManager.sharedInstance().palette? = FLIROnePalette
             }
         }

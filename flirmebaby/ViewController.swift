@@ -32,7 +32,7 @@ class ViewController: UIViewController {
         didSet {
             flirDataSource?.imageOptions = [.blendedMSXRGBA8888, .radiometricKelvinx100]
             flirDataSource?.didConnectClosure = {
-                self.flirDataSource?.palette = .Iron
+                self.flirDataSource?.palette = .iron
                 DispatchQueue.main.async {
                     self.disconnectedView.isHidden = true
                     self.orientImage()
@@ -76,7 +76,7 @@ class ViewController: UIViewController {
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        coordinator.animate(alongsideTransition: { (context) in
+        coordinator.animate(alongsideTransition: { _ in
             self.orientImage()
         }, completion: nil)
     }
@@ -108,7 +108,7 @@ class ViewController: UIViewController {
         var memoryPositionOfMinimumTemperature = 0
         var currentMemoryPosition = 0
         let length = radiometricData.count / MemoryLayout<UInt8>.size
-        radiometricData.enumerateBytes {(buffer: UnsafeBufferPointer<UInt8>, unused: Data.Index, stop: inout Bool) in
+        radiometricData.enumerateBytes {(buffer: UnsafeBufferPointer<UInt8>, _: Data.Index, _: inout Bool) in
             while currentMemoryPosition < length {
                 guard let baseAddress = buffer.baseAddress else {
                     return
@@ -179,4 +179,3 @@ class ViewController: UIViewController {
         return (Float(hundredthsOfKelvin) * hundredthsOfKelvinToFarenheitDegrees + absoluteZeroInFarhenheit)
     }
 }
-
