@@ -51,8 +51,8 @@ class ViewController: UIViewController {
             }
             flirDataSource?.didReceiveImageClosure = { image, size in
                 DispatchQueue.main.async {
-                    self.imageView.image = image;
-                    self.reflection.image = image;
+                    self.imageView.image = image
+                    self.reflection.image = image
                 }
             }
             flirDataSource?.didReceiveDataClosure = { data, size in
@@ -135,11 +135,11 @@ class ViewController: UIViewController {
         DispatchQueue.main.async {
             self.maxTemperatureCrosshairsTargetCoordinates(scaledCoordinatesOfMaxTemperature)
             self.minTemperatureCrosshairsTargetCoordinates(scaledCoordinatesOfMinTemperature)
-            self.maxTemperatureLabel.text = "\(self.hundredthsOfKelvinInFahrenheit(maxTemperature)) °F";
-            self.minTemperatureLabel.text = "\(self.hundredthsOfKelvinInFahrenheit(minTemperature)) °F";
+            self.maxTemperatureLabel.text = "\(self.hundredthsOfKelvinInFahrenheit(maxTemperature)) °F"
+            self.minTemperatureLabel.text = "\(self.hundredthsOfKelvinInFahrenheit(minTemperature)) °F"
             UIView.animate(withDuration: halfOfFLIRPeriod, animations: {
                 self.view.layoutIfNeeded()
-            }) 
+            })
         }
     }
 
