@@ -84,7 +84,7 @@ class FLIRDataSource: NSObject, FLIRDataSourceProtocol {
         guard !isDemoShown else {
             return
         }
-        if (FLIROneSDKSimulation.sharedInstance().isAvailable()) {
+        if FLIROneSDKSimulation.sharedInstance().isAvailable() {
             FLIROneSDKSimulation.sharedInstance().connect(withFrameBundleName: "sampleframes_hq", withBatteryChargePercentage: 42)
             isDemoRequested = true
         }
@@ -104,7 +104,7 @@ extension FLIRDataSource: FLIROneSDKImageReceiverDelegate, FLIROneSDKStreamManag
     }
 
     func flirOneSDKDidConnect() {
-        if (isDemoRequested) {
+        if isDemoRequested {
             isDemoShown = true
             isDemoRequested = false
         }
