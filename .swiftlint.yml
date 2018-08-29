@@ -1,9 +1,9 @@
 disabled_rules: # rule identifiers to exclude from running
   - line_length
   - identifier_name
-  - colon
-  - comma
-  - control_statement
+#  - colon
+#  - comma
+#  - control_statement
 opt_in_rules: # some rules are only opt-in
   - empty_count
   # Find all the available rules by running:
