@@ -1,14 +1,14 @@
 import Foundation
 
 enum Palette: String {
-    case Undefined = ""
-    case Arctic = "Arctic"
-    case Hottest = "Hottest"
-    case Gray = "Gray"
-    case Iron = "Iron"
-    case Contrast = "Contrast"
-    case Rainbow = "Rainbow"
-    case Coldest = "Coldest"
+    case undefined = ""
+    case arctic = "Arctic"
+    case hottest = "Hottest"
+    case gray = "Gray"
+    case iron = "Iron"
+    case contrast = "Contrast"
+    case rainbow = "Rainbow"
+    case coldest = "Coldest"
 }
 
 enum FLIRImageOptions: UInt64 {
@@ -20,7 +20,7 @@ enum FLIRImageOptions: UInt64 {
     case radiometricKelvinx100 = 0x20
 }
 
-typealias VoidClosure = () -> (Void)
+typealias VoidClosure = () -> Void
 typealias ImageReceptionClosure = (UIImage, CGSize) -> Void
 typealias DataReceptionClosure = (Data, CGSize) -> Void
 
@@ -37,11 +37,11 @@ protocol FLIRDataSourceProtocol {
 
 class FLIRDataSource: NSObject, FLIRDataSourceProtocol {
 
-    lazy var FLIROneSDKPalettes: [String: FLIROneSDKPalette]! = FLIROneSDKPalette.palettes() as! [String: FLIROneSDKPalette]
-    var palette: Palette = .Undefined {
-        //Did-connect closure is a good place to initialize this.
+    lazy var FLIROneSDKPalettes: [String: FLIROneSDKPalette]? = FLIROneSDKPalette.palettes() as? [String: FLIROneSDKPalette]
+    var palette: Palette = .undefined {
+        // Did-connect closure is a good place to initialize this.
         didSet {
-            if palette != oldValue, let FLIROnePalette = FLIROneSDKPalettes[palette.rawValue] {
+            if palette != oldValue, let FLIROnePalette = FLIROneSDKPalettes?[palette.rawValue] {
                 FLIROneSDKStreamManager.sharedInstance().palette? = FLIROnePalette
             }
         }
@@ -63,15 +63,21 @@ class FLIRDataSource: NSObject, FLIRDataSourceProtocol {
         }
     }
     var isDemoShown = false
-    fileprivate var isDemoRequested = false
+    private var isDemoRequested = false
+    private var objectProtocol: NSObjectProtocol?
 
     override init() {
         super.init()
         FLIROneSDKStreamManager.sharedInstance().addDelegate(self)
-        NotificationCenter.default.addObserver(self, selector: #selector(requestDemoIfNeeded), name: .UIApplicationWillResignActive, object: nil)
+        objectProtocol = NotificationCenter.default.addObserver(
+            forName: .UIApplicationWillResignActive,
+            object: nil,
+            queue: OperationQueue.main,
+            using: requestDemoIfNeeded
+        )
     }
 
-    @objc fileprivate func requestDemoIfNeeded() {
+    private func requestDemoIfNeeded(notification: Notification) {
         isDemoRequested = isDemoShown
     }
 
@@ -84,7 +90,7 @@ class FLIRDataSource: NSObject, FLIRDataSourceProtocol {
         guard !isDemoShown else {
             return
         }
-        if (FLIROneSDKSimulation.sharedInstance().isAvailable()) {
+        if FLIROneSDKSimulation.sharedInstance().isAvailable() {
             FLIROneSDKSimulation.sharedInstance().connect(withFrameBundleName: "sampleframes_hq", withBatteryChargePercentage: 42)
             isDemoRequested = true
         }
@@ -104,7 +110,7 @@ extension FLIRDataSource: FLIROneSDKImageReceiverDelegate, FLIROneSDKStreamManag
     }
 
     func flirOneSDKDidConnect() {
-        if (isDemoRequested) {
+        if isDemoRequested {
             isDemoShown = true
             isDemoRequested = false
         }
