@@ -383,6 +383,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/FLIROneSDK.framework/Headers";
 				INFOPLIST_FILE = flirmebaby/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
@@ -412,6 +413,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/FLIROneSDK.framework/Headers";
 				INFOPLIST_FILE = flirmebaby/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
