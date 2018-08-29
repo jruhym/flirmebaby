@@ -63,7 +63,7 @@ class FLIRDataSource: NSObject, FLIRDataSourceProtocol {
         }
     }
     var isDemoShown = false
-    fileprivate var isDemoRequested = false
+    private var isDemoRequested = false
     private var objectProtocol: NSObjectProtocol?
 
     override init() {
@@ -77,7 +77,7 @@ class FLIRDataSource: NSObject, FLIRDataSourceProtocol {
         )
     }
 
-    fileprivate func requestDemoIfNeeded(notification: Notification) {
+    private func requestDemoIfNeeded(notification: Notification) {
         isDemoRequested = isDemoShown
     }
 
