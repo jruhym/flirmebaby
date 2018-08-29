@@ -60,7 +60,7 @@ class ViewController: UIViewController {
             }
         }
     }
-    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return [.portrait, .portraitUpsideDown]
     }
 
