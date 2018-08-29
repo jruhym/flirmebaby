@@ -64,14 +64,20 @@ class FLIRDataSource: NSObject, FLIRDataSourceProtocol {
     }
     var isDemoShown = false
     fileprivate var isDemoRequested = false
+    private var objectProtocol: NSObjectProtocol?
 
     override init() {
         super.init()
         FLIROneSDKStreamManager.sharedInstance().addDelegate(self)
-        NotificationCenter.default.addObserver(self, selector: #selector(requestDemoIfNeeded), name: .UIApplicationWillResignActive, object: nil)
+        objectProtocol = NotificationCenter.default.addObserver(
+            forName: .UIApplicationWillResignActive,
+            object: nil,
+            queue: OperationQueue.main,
+            using: requestDemoIfNeeded
+        )
     }
 
-    @objc fileprivate func requestDemoIfNeeded() {
+    fileprivate func requestDemoIfNeeded(notification: Notification) {
         isDemoRequested = isDemoShown
     }
 
