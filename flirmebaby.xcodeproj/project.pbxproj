@@ -54,9 +54,9 @@
 			files = (
 				3AF762201CC9890B00599F6D /* Accelerate.framework in Frameworks */,
 				3A469B9F202FB4B60030E204 /* AssetsLibrary.framework in Frameworks */,
-				3A469B9B202FB3F40030E204 /* opencv2.framework in Frameworks */,
 				3AF762221CC9896D00599F6D /* libstdc++.tbd in Frameworks */,
 				3A469B9D202FB4910030E204 /* FLIROneSDK.framework in Frameworks */,
+				3A469B9B202FB3F40030E204 /* opencv2.framework in Frameworks */,
 				3A469BA3202FB9F00030E204 /* GLKit.framework in Frameworks */,
 				C34EC192E2886B1A163F64B2 /* Pods_flirmebaby.framework in Frameworks */,
 			);
@@ -167,6 +167,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
