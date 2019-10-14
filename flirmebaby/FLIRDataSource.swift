@@ -70,7 +70,7 @@ class FLIRDataSource: NSObject, FLIRDataSourceProtocol {
         super.init()
         FLIROneSDKStreamManager.sharedInstance().addDelegate(self)
         objectProtocol = NotificationCenter.default.addObserver(
-            forName: .UIApplicationWillResignActive,
+            forName: UIApplication.willResignActiveNotification,
             object: nil,
             queue: OperationQueue.main,
             using: requestDemoIfNeeded
