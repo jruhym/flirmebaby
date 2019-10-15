@@ -130,18 +130,19 @@ class ViewController: UIViewController {
         })
 
         let sizeFloor = Int(round(size.width))
-        let coordinatesOfMaxTemperature = rowMajorPositionToCoordinates(memoryPositionOfMaximumTemperature / sizeOfMeasurment, rowCount: sizeFloor)
-        let scaledCoordinatesOfMaxTemperature = scaleCoordinates(coordinatesOfMaxTemperature, toSize: size)
-        let coordinatesOfMinTemperature = rowMajorPositionToCoordinates(memoryPositionOfMinimumTemperature / sizeOfMeasurment, rowCount: sizeFloor)
-        let scaledCoordinatesOfMinTemperature = scaleCoordinates(coordinatesOfMinTemperature, toSize: size)
         DispatchQueue.main.async {
+            let coordinatesOfMaxTemperature = self.rowMajorPositionToCoordinates(memoryPositionOfMaximumTemperature / sizeOfMeasurment, rowCount: sizeFloor)
+            let scaledCoordinatesOfMaxTemperature = self.scaleCoordinates(coordinatesOfMaxTemperature, toSize: size)
+            let coordinatesOfMinTemperature = self.rowMajorPositionToCoordinates(memoryPositionOfMinimumTemperature / sizeOfMeasurment, rowCount: sizeFloor)
+            let scaledCoordinatesOfMinTemperature = self.scaleCoordinates(coordinatesOfMinTemperature, toSize: size)
             self.maxTemperatureCrosshairsTargetCoordinates(scaledCoordinatesOfMaxTemperature)
             self.minTemperatureCrosshairsTargetCoordinates(scaledCoordinatesOfMinTemperature)
             self.maxTemperatureLabel.text = "\(self.hundredthsOfKelvinInFahrenheit(maxTemperature)) °F"
             self.minTemperatureLabel.text = "\(self.hundredthsOfKelvinInFahrenheit(minTemperature)) °F"
-            UIView.animate(withDuration: halfOfFLIRPeriod, animations: {
+            let animator = UIViewPropertyAnimator(duration: halfOfFLIRPeriod, curve: .easeInOut) {
                 self.view.layoutIfNeeded()
-            })
+            }
+            animator.startAnimation()
         }
     }
 
