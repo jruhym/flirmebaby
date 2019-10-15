@@ -28,7 +28,7 @@ class ViewController: UIViewController {
     private var yScaleFactor: CGFloat = 1.0
     private var previousSizeOfFieldOfVision = CGSize()
     private var previousSizeOfImage = CGSize()
-    private weak var flirDataSource: FLIRDataSource? {
+    private var flirDataSource: FLIRDataSource? {
         didSet {
             flirDataSource?.imageOptions = [.blendedMSXRGBA8888, .radiometricKelvinx100]
             flirDataSource?.didConnectClosure = {
