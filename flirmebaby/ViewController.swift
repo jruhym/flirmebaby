@@ -108,10 +108,11 @@ class ViewController: UIViewController {
         var memoryPositionOfMinimumTemperature = 0
         var currentMemoryPosition = 0
         let length = radiometricData.count / MemoryLayout<UInt8>.size
-        radiometricData.enumerateBytes {(buffer: UnsafeBufferPointer<UInt8>, _: Data.Index, _: inout Bool) in
+        _ = radiometricData.withUnsafeBytes({ (rawPointer: UnsafeRawBufferPointer) -> UInt8 in
+            let pointer: UnsafeBufferPointer<UInt8> = rawPointer.bindMemory(to: UInt8.self)
             while currentMemoryPosition < length {
-                guard let baseAddress = buffer.baseAddress else {
-                    return
+                guard let baseAddress = pointer.baseAddress else {
+                    return 0
                 }
                 let integer = UnsafeRawPointer(baseAddress + currentMemoryPosition)
                 let temperature = integer.load(as: UInt16.self)
@@ -125,7 +126,8 @@ class ViewController: UIViewController {
                 }
                 currentMemoryPosition += sizeOfMeasurment
             }
-        }
+            return 0
+        })
 
         let sizeFloor = Int(round(size.width))
         let coordinatesOfMaxTemperature = rowMajorPositionToCoordinates(memoryPositionOfMaximumTemperature / sizeOfMeasurment, rowCount: sizeFloor)
