@@ -1,13 +1,13 @@
 import UIKit
 
-let sizeOfMeasurment = MemoryLayout<UInt16>.size
-let hundredthsOfKelvinToFarenheitDegrees: Float = 0.018
-let absoluteZeroInFarhenheit: Float = -459.67
-let halfOfFLIRPeriod: TimeInterval = 0.05555555555556
-let verticalFlip = CGAffineTransform(scaleX: 1, y: -1)
-let horizontalFlip = CGAffineTransform(scaleX: -1, y: 1)
-let upsideDown = CGAffineTransform(rotationAngle: -CGFloat.pi)
-let rightSideUp = CGAffineTransform(rotationAngle: 0)
+let kSizeOfMeasurment = MemoryLayout<UInt16>.size
+let kHundredthsOfKelvinToFarenheitDegrees: Float = 0.018
+let kAbsoluteZeroInFarhenheit: Float = -459.67
+let kHalfOfFLIRPeriod: TimeInterval = 0.05555555555556
+let kVerticalFlip = CGAffineTransform(scaleX: 1, y: -1)
+let kHorizontalFlip = CGAffineTransform(scaleX: -1, y: 1)
+let kUpsideDown = CGAffineTransform(rotationAngle: -CGFloat.pi)
+let kRightSideUp = CGAffineTransform(rotationAngle: 0)
 
 class ViewController: UIViewController {
 
@@ -88,15 +88,15 @@ class ViewController: UIViewController {
     private func orientImage() {
         switch UIDevice.current.orientation {
         case .portrait, .faceUp, .faceDown:
-            self.fieldOfVision.transform = rightSideUp
-            self.reflection.transform = verticalFlip
+            self.fieldOfVision.transform = kRightSideUp
+            self.reflection.transform = kVerticalFlip
         case .portraitUpsideDown:
             guard let flirDataSource = flirDataSource else {
                 break
             }
             let rotationUnnecessary = flirDataSource.isDemoShown || !(self.disconnectedView.isHidden)
-            self.fieldOfVision.transform = rotationUnnecessary ? rightSideUp : upsideDown
-            self.reflection.transform = rotationUnnecessary ? verticalFlip : horizontalFlip
+            self.fieldOfVision.transform = rotationUnnecessary ? kRightSideUp : kUpsideDown
+            self.reflection.transform = rotationUnnecessary ? kVerticalFlip : kHorizontalFlip
         default: break
         }
     }
@@ -124,22 +124,22 @@ class ViewController: UIViewController {
                     minTemperature = temperature
                     memoryPositionOfMinimumTemperature = currentMemoryPosition
                 }
-                currentMemoryPosition += sizeOfMeasurment
+                currentMemoryPosition += kSizeOfMeasurment
             }
             return 0
         })
 
         let sizeFloor = Int(round(size.width))
         DispatchQueue.main.async {
-            let coordinatesOfMaxTemperature = self.rowMajorPositionToCoordinates(memoryPositionOfMaximumTemperature / sizeOfMeasurment, rowCount: sizeFloor)
+            let coordinatesOfMaxTemperature = self.rowMajorPositionToCoordinates(memoryPositionOfMaximumTemperature / kSizeOfMeasurment, rowCount: sizeFloor)
             let scaledCoordinatesOfMaxTemperature = self.scaleCoordinates(coordinatesOfMaxTemperature, toSize: size)
-            let coordinatesOfMinTemperature = self.rowMajorPositionToCoordinates(memoryPositionOfMinimumTemperature / sizeOfMeasurment, rowCount: sizeFloor)
+            let coordinatesOfMinTemperature = self.rowMajorPositionToCoordinates(memoryPositionOfMinimumTemperature / kSizeOfMeasurment, rowCount: sizeFloor)
             let scaledCoordinatesOfMinTemperature = self.scaleCoordinates(coordinatesOfMinTemperature, toSize: size)
             self.maxTemperatureCrosshairsTargetCoordinates(scaledCoordinatesOfMaxTemperature)
             self.minTemperatureCrosshairsTargetCoordinates(scaledCoordinatesOfMinTemperature)
             self.maxTemperatureLabel.text = "\(self.hundredthsOfKelvinInFahrenheit(maxTemperature)) °F"
             self.minTemperatureLabel.text = "\(self.hundredthsOfKelvinInFahrenheit(minTemperature)) °F"
-            let animator = UIViewPropertyAnimator(duration: halfOfFLIRPeriod, curve: .easeInOut) {
+            let animator = UIViewPropertyAnimator(duration: kHalfOfFLIRPeriod, curve: .easeInOut) {
                 self.view.layoutIfNeeded()
             }
             animator.startAnimation()
@@ -179,6 +179,6 @@ class ViewController: UIViewController {
     }
 
     func hundredthsOfKelvinInFahrenheit(_ hundredthsOfKelvin: UInt16) -> Float {
-        return (Float(hundredthsOfKelvin) * hundredthsOfKelvinToFarenheitDegrees + absoluteZeroInFarhenheit)
+        return (Float(hundredthsOfKelvin) * kHundredthsOfKelvinToFarenheitDegrees + kAbsoluteZeroInFarhenheit)
     }
 }
