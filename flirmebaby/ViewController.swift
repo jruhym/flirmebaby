@@ -1,13 +1,13 @@
 import UIKit
 
-let sizeOfMeasurment = MemoryLayout<UInt16>.size
-let hundredthsOfKelvinToFarenheitDegrees: Float = 0.018
-let absoluteZeroInFarhenheit: Float = -459.67
-let halfOfFLIRPeriod: TimeInterval = 0.05555555555556
-let verticalFlip = CGAffineTransform(scaleX: 1, y: -1)
-let horizontalFlip = CGAffineTransform(scaleX: -1, y: 1)
-let upsideDown = CGAffineTransform(rotationAngle: -CGFloat.pi)
-let rightSideUp = CGAffineTransform(rotationAngle: 0)
+let kSizeOfMeasurment = MemoryLayout<UInt16>.size
+let kHundredthsOfKelvinToFarenheitDegrees: Float = 0.018
+let kAbsoluteZeroInFarhenheit: Float = -459.67
+let kHalfOfFLIRPeriod: TimeInterval = 0.05555555555556
+let kVerticalFlip = CGAffineTransform(scaleX: 1, y: -1)
+let kHorizontalFlip = CGAffineTransform(scaleX: -1, y: 1)
+let kUpsideDown = CGAffineTransform(rotationAngle: -CGFloat.pi)
+let kRightSideUp = CGAffineTransform(rotationAngle: 0)
 
 class ViewController: UIViewController {
 
@@ -28,7 +28,7 @@ class ViewController: UIViewController {
     private var yScaleFactor: CGFloat = 1.0
     private var previousSizeOfFieldOfVision = CGSize()
     private var previousSizeOfImage = CGSize()
-    private weak var flirDataSource: FLIRDataSource? {
+    private var flirDataSource: FLIRDataSource? {
         didSet {
             flirDataSource?.imageOptions = [.blendedMSXRGBA8888, .radiometricKelvinx100]
             flirDataSource?.didConnectClosure = {
@@ -88,15 +88,15 @@ class ViewController: UIViewController {
     private func orientImage() {
         switch UIDevice.current.orientation {
         case .portrait, .faceUp, .faceDown:
-            self.fieldOfVision.transform = rightSideUp
-            self.reflection.transform = verticalFlip
+            self.fieldOfVision.transform = kRightSideUp
+            self.reflection.transform = kVerticalFlip
         case .portraitUpsideDown:
             guard let flirDataSource = flirDataSource else {
                 break
             }
             let rotationUnnecessary = flirDataSource.isDemoShown || !(self.disconnectedView.isHidden)
-            self.fieldOfVision.transform = rotationUnnecessary ? rightSideUp : upsideDown
-            self.reflection.transform = rotationUnnecessary ? verticalFlip : horizontalFlip
+            self.fieldOfVision.transform = rotationUnnecessary ? kRightSideUp : kUpsideDown
+            self.reflection.transform = rotationUnnecessary ? kVerticalFlip : kHorizontalFlip
         default: break
         }
     }
@@ -108,10 +108,11 @@ class ViewController: UIViewController {
         var memoryPositionOfMinimumTemperature = 0
         var currentMemoryPosition = 0
         let length = radiometricData.count / MemoryLayout<UInt8>.size
-        radiometricData.enumerateBytes {(buffer: UnsafeBufferPointer<UInt8>, _: Data.Index, _: inout Bool) in
+        _ = radiometricData.withUnsafeBytes({ (rawPointer: UnsafeRawBufferPointer) -> UInt8 in
+            let pointer: UnsafeBufferPointer<UInt8> = rawPointer.bindMemory(to: UInt8.self)
             while currentMemoryPosition < length {
-                guard let baseAddress = buffer.baseAddress else {
-                    return
+                guard let baseAddress = pointer.baseAddress else {
+                    return 0
                 }
                 let integer = UnsafeRawPointer(baseAddress + currentMemoryPosition)
                 let temperature = integer.load(as: UInt16.self)
@@ -123,23 +124,25 @@ class ViewController: UIViewController {
                     minTemperature = temperature
                     memoryPositionOfMinimumTemperature = currentMemoryPosition
                 }
-                currentMemoryPosition += sizeOfMeasurment
+                currentMemoryPosition += kSizeOfMeasurment
             }
-        }
+            return 0
+        })
 
         let sizeFloor = Int(round(size.width))
-        let coordinatesOfMaxTemperature = rowMajorPositionToCoordinates(memoryPositionOfMaximumTemperature / sizeOfMeasurment, rowCount: sizeFloor)
-        let scaledCoordinatesOfMaxTemperature = scaleCoordinates(coordinatesOfMaxTemperature, toSize: size)
-        let coordinatesOfMinTemperature = rowMajorPositionToCoordinates(memoryPositionOfMinimumTemperature / sizeOfMeasurment, rowCount: sizeFloor)
-        let scaledCoordinatesOfMinTemperature = scaleCoordinates(coordinatesOfMinTemperature, toSize: size)
         DispatchQueue.main.async {
+            let coordinatesOfMaxTemperature = self.rowMajorPositionToCoordinates(memoryPositionOfMaximumTemperature / kSizeOfMeasurment, rowCount: sizeFloor)
+            let scaledCoordinatesOfMaxTemperature = self.scaleCoordinates(coordinatesOfMaxTemperature, toSize: size)
+            let coordinatesOfMinTemperature = self.rowMajorPositionToCoordinates(memoryPositionOfMinimumTemperature / kSizeOfMeasurment, rowCount: sizeFloor)
+            let scaledCoordinatesOfMinTemperature = self.scaleCoordinates(coordinatesOfMinTemperature, toSize: size)
             self.maxTemperatureCrosshairsTargetCoordinates(scaledCoordinatesOfMaxTemperature)
             self.minTemperatureCrosshairsTargetCoordinates(scaledCoordinatesOfMinTemperature)
             self.maxTemperatureLabel.text = "\(self.hundredthsOfKelvinInFahrenheit(maxTemperature)) °F"
             self.minTemperatureLabel.text = "\(self.hundredthsOfKelvinInFahrenheit(minTemperature)) °F"
-            UIView.animate(withDuration: halfOfFLIRPeriod, animations: {
+            let animator = UIViewPropertyAnimator(duration: kHalfOfFLIRPeriod, curve: .easeInOut) {
                 self.view.layoutIfNeeded()
-            })
+            }
+            animator.startAnimation()
         }
     }
 
@@ -176,6 +179,6 @@ class ViewController: UIViewController {
     }
 
     func hundredthsOfKelvinInFahrenheit(_ hundredthsOfKelvin: UInt16) -> Float {
-        return (Float(hundredthsOfKelvin) * hundredthsOfKelvinToFarenheitDegrees + absoluteZeroInFarhenheit)
+        return (Float(hundredthsOfKelvin) * kHundredthsOfKelvinToFarenheitDegrees + kAbsoluteZeroInFarhenheit)
     }
 }
