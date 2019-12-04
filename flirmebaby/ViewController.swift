@@ -81,7 +81,7 @@ class ViewController: UIViewController {
         }, completion: nil)
     }
 
-    @IBAction func showDemo(_ sender: UIButton) {
+    @IBAction private func showDemo(_ sender: UIButton) {
         flirDataSource?.showDemo()
     }
 
