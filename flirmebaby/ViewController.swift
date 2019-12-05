@@ -101,10 +101,7 @@ class ViewController: UIViewController {
         }
     }
 
-    func seekHotAndCold(_ radiometricData: Data?, imageSize size: CGSize) {
-        guard let radiometricData = radiometricData else {
-            return
-        }
+    func seekHotAndCold(_ radiometricData: Data, imageSize size: CGSize) {
         var maxTemperature = UInt16()
         var minTemperature = UInt16.max
         var memoryPositionOfMaximumTemperature = 0
