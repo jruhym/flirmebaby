@@ -111,7 +111,7 @@ class ViewController: UIViewController {
         var memoryPositionOfMinimumTemperature = 0
         var currentMemoryPosition = 0
         let length = radiometricData.count / MemoryLayout<UInt8>.size
-        _ = radiometricData.withUnsafeBytes({ (rawPointer: UnsafeRawBufferPointer) -> UInt8 in
+        _ = radiometricData.withUnsafeBytes { (rawPointer: UnsafeRawBufferPointer) -> UInt8 in
             let pointer: UnsafeBufferPointer<UInt8> = rawPointer.bindMemory(to: UInt8.self)
             while currentMemoryPosition < length {
                 guard let baseAddress = pointer.baseAddress else {
@@ -130,7 +130,7 @@ class ViewController: UIViewController {
                 currentMemoryPosition += kSizeOfMeasurment
             }
             return 0
-        })
+        }
 
         let sizeFloor = Int(round(size.width))
         DispatchQueue.main.async {
